@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="stylesheet" href="./css/city-state-zip-dropdown.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.15/build/css/intlTelInput.css"
+    />
+
+    <style>
+      .is-valid {
+        border-color: #198754 !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+      }
+
+      .is-invalid {
+        border-color: #dc3545 !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+      }
+
+      .invalid-feedback {
+        display: none;
+      }
+
+      .is-invalid ~ .invalid-feedback {
+        display: block;
+      }
+    </style>
+
+    <title>Form</title>
+  </head>
+  <body>
+    <!-- MultiStep Form -->
+    <section class="">
+      <div class="container">
+        <div class="row mt-4">
+          <div class="row">
+            <form id="pickupDetailsForm" novalidate>
+              <!-- Full Name -->
+              <div class="col-md-12 mb-3">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  placeholder="Name*"
+                  required
+                  minlength="2"
+                  maxlength="100"
+                />
+                <div class="invalid-feedback" id="fullName-error">
+                  Please enter a valid name (minimum 2 characters)
+                </div>
+              </div>
+
+              <!-- Phone with Country Code -->
+              <div class="col-md-12 mb-3">
+                <input
+                  class="form-control"
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone*"
+                  required
+                />
+                <div class="invalid-feedback" id="phone-error">
+                  Please enter a valid phone number
+                </div>
+              </div>
+
+              <!--Email -->
+              <div class="col-md-12 mb-3">
+                <input
+                  class="form-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email*"
+                  required
+                />
+                <div class="invalid-feedback" id="businessEmail-error">
+                  Please enter a valid email address
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div class="col-md-12 mb-4">
+                <select
+                  class="form-control"
+                  id="subject"
+                  name="subject"
+                  required
+                >
+                  <option value="">Subject*</option>
+                  <option value="eyes">Eyes</option>
+                  <option value="ears">Ears</option>
+                  <option value="brain">Brain</option>
+                  <option value="others">Others</option>
+                </select>
+                <div class="invalid-feedback" id="subject-error">
+                  Please select a subject
+                </div>
+              </div>
+
+              <!--Brief Description -->
+              <div class="col-md-12 mb-3">
+                <textarea
+                  class="form-control"
+                  id="brief-description"
+                  name="brief-description"
+                  placeholder="Please describe your problem in brief*"
+                  required
+                ></textarea>
+                <div class="invalid-feedback" id="brief-description-error">
+                  Please enter a brief description (minimum 10 characters and
+                  maximum 1000 characters)
+                </div>
+              </div>
+
+              <!-- Prescription Upload 
+              <div class="col-md-12 mb-4">
+                <label for="prescription" class="form-label">
+                  Upload Prescription / Image (jpg, png, pdf)
+                  <span class="text-muted"
+                    >(optional, max 500 KB after compression)</span
+                  >
+                </label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="prescription"
+                  name="prescription"
+                  accept="image/jpeg,image/png,application/pdf"
+                />
+                <div class="invalid-feedback" id="prescription-error">
+                  File must be jpg, png, pdf and ≤ 500 KB (images will be
+                  compressed if needed)
+                </div>
+                <small id="file-status" class="form-text text-muted"></small>
+              </div> -->
+
+              <!-- Submit Button -->
+              <div class="col-md-12 text-center">
+                <button
+                  type="submit"
+                  class="btn btn-secondary btn-lg px-5"
+                  id="submitBtn"
+                  disabled
+                >
+                  Enquiry Now
+                </button>
+                <div id="form-message" class="mt-3"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.15/build/js/intlTelInput.min.js"></script>
+    <script type="module" src="js/business-form.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".nav-tabs > li a[title]").tooltip();
+
+        //Wizard
+        $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+          var target = $(e.target);
+
+          if (target.parent().hasClass("disabled")) {
+            return false;
+          }
+        });
+
+        $(".next-step").click(function (e) {
+          var active = $(".wizard .nav-tabs li.active");
+          active.next().removeClass("disabled");
+          nextTab(active);
+        });
+        $(".prev-step").click(function (e) {
+          var active = $(".wizard .nav-tabs li.active");
+          prevTab(active);
+        });
+      });
+
+      function nextTab(elem) {
+        $(elem).next().find('a[data-toggle="tab"]').click();
+      }
+      function prevTab(elem) {
+        $(elem).prev().find('a[data-toggle="tab"]').click();
+      }
+
+      $(".nav-tabs").on("click", "li", function () {
+        $(".nav-tabs li.active").removeClass("active");
+        $(this).addClass("active");
+      });
+    </script>
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("mySidenav1").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("mySidenav1").style.width = "0";
+      }
+    </script>
+
+    <script></script>
+    
+
+    <script>
+      // Only runs once when the DOM is fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        const areaInput = document.getElementById("preferredAreaInput");
+
+        if (!areaInput) {
+          console.warn("Preferred area input not found on page");
+          return;
+        }
+
+        // Try to load from sessionStorage
+        const savedArea = sessionStorage.getItem("searchLocation");
+
+        if (savedArea && savedArea.trim() !== "") {
+          areaInput.value = savedArea.trim();
+          console.log("Loaded preferred area from sessionStorage:", savedArea);
+          // IMPORTANT: Mark as interacted & validate immediately
+          interactedFields.add("preferredAreaInput");
+          validateField(areaInput);
+        } else {
+          console.log("No saved preferred area found in sessionStorage");
+          // Optional: you can set a default placeholder value if needed
+          // areaInput.value = "Select your preferred area";
+        }
+      });
+
+      // ────────────────────────────────────────────────
+      //  Initialize international phone input
+      // ────────────────────────────────────────────────
+      const phoneInputField = document.getElementById("phone");
+      const phoneInput = window.intlTelInput(phoneInputField, {
+        initialCountry: "us",
+        preferredCountries: ["in", "us", "gb", "ae", "sg"],
+        utilsScript:
+          "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.15/build/js/utils.js",
+        separateDialCode: true, // ← shows +91 next to flag
+        autoPlaceholder: "aggressive",
+        nationalMode: false,
+        formatOnDisplay: true,
+      });
+
+      // ────────────────────────────────────────────────
+      //  Form validation logic
+      // ────────────────────────────────────────────────
+      const form = document.getElementById("pickupDetailsForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const messageDiv = document.getElementById("form-message");
+
+      const fieldsToValidate = [
+        "fullName",
+        "phone",
+        "email",
+        "subject",
+        "brief-description",
+        // "prescription" <- optional
+      ];
+
+      // Track which fields the user has interacted with
+      const interactedFields = new Set();
+
+      function validateField(field) {
+        if (!field) return;
+
+        let isValid = false;
+
+        switch (field.id) {
+          case "fullName":
+            isValid = field.value.trim().length >= 2;
+            break;
+          case "email":
+            isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+            break;
+          case "subject":
+            isValid = field.value !== "";
+            break;
+          case "phone":
+            isValid = phoneInput.isValidNumber();
+            break;
+          case "brief-description":
+            isValid = field.value.trim().length >= 10;
+            break;
+        }
+
+        // Only show validation styling after user has interacted
+        if (interactedFields.has(field.id)) {
+          field.classList.toggle("is-valid", isValid);
+          field.classList.toggle("is-invalid", !isValid);
+        }
+
+        updateSubmitButton();
+      }
+
+      function updateSubmitButton() {
+        let allValid = true;
+
+        fieldsToValidate.forEach((id) => {
+          if (id === "prescription") return;
+          const field = document.getElementById(id);
+          if (!field) return;
+
+          // If field was interacted with → must be valid
+          if (interactedFields.has(id)) {
+            if (!field.classList.contains("is-valid")) {
+              allValid = false;
+            }
+          } else {
+            // Not interacted yet → cannot submit
+            allValid = false;
+          }
+        });
+
+        // Prescription: if interacted → must be valid (or cleared)
+        if (
+          interactedFields.has("prescription") &&
+          fileInput.classList.contains("is-invalid")
+        ) {
+          allValid = false;
+        }
+
+        submitBtn.disabled = !allValid;
+      }
+
+      // Attach event listeners
+      fieldsToValidate.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          // Mark field as interacted on first focus or input
+          el.addEventListener("focus", () => interactedFields.add(id));
+          el.addEventListener("input", () => {
+            interactedFields.add(id);
+            validateField(el);
+          });
+          el.addEventListener("blur", () => {
+            interactedFields.add(id);
+            validateField(el);
+          });
+        }
+      });
+
+      phoneInputField.addEventListener("countrychange", () => {
+        interactedFields.add("phone");
+        validateField(phoneInputField);
+      });
+
+      // We'll store the processed file here
+      let processedFile = null; // null = no file or invalid
+      let originalFileName = ""; // for display
+
+      const fileInput = document.getElementById("prescription");
+      const fileStatus = document.getElementById("file-status");
+      const prescriptionError = document.getElementById("prescription-error");
+
+      // ────────────────────────────────────────────────
+      //  File change handler + compression logic
+      // ────────────────────────────────────────────────
+      fileInput.addEventListener("change", async () => {
+        const file = fileInput.files[0];
+        processedFile = null;
+        fileStatus.textContent = "";
+        fileInput.classList.remove("is-valid", "is-invalid");
+
+        if (!file) {
+          // User cleared the file
+          interactedFields.add("prescription");
+          updateSubmitButton();
+          return;
+        }
+
+        interactedFields.add("prescription");
+
+        const isImage = file.type.startsWith("image/");
+        const isPdf = file.type === "application/pdf";
+
+        if (!isImage && !isPdf) {
+          showFileError("Only JPG, PNG or PDF allowed.");
+          return;
+        }
+
+        // Show original size
+        const originalSizeKB = (file.size / 1024).toFixed(1);
+        fileStatus.textContent = `Selected: ${file.name} (${originalSizeKB} KB)`;
+
+        if (file.size > 500 * 1024) {
+          if (isPdf) {
+            showFileError(
+              "PDF > 500 KB — please compress it first or choose smaller file.",
+            );
+            return;
+          }
+
+          // Try to compress image
+          fileStatus.textContent += " — Compressing...";
+
+          try {
+            const options = {
+              maxSizeMB: 0.48, // target < 500 KB with margin
+              maxWidthOrHeight: 1200, // reasonable resolution for prescription
+              useWebWorker: true, // better UX
+              fileType: file.type, // keep jpeg/png
+            };
+
+            const compressedFile = await imageCompression(file, options);
+
+            const compressedSizeKB = (compressedFile.size / 1024).toFixed(1);
+
+            if (compressedFile.size > 500 * 1024) {
+              showFileError(
+                `Even after compression: ${compressedSizeKB} KB — too large.`,
+              );
+              return;
+            }
+
+            processedFile = compressedFile;
+            fileStatus.textContent = `Compressed: ${file.name} → ${compressedSizeKB} KB`;
+            fileInput.classList.add("is-valid");
+          } catch (err) {
+            console.error("Compression failed:", err);
+            showFileError("Failed to compress image. Try a smaller file.");
+            return;
+          }
+        } else {
+          // Already small enough
+          processedFile = file;
+          fileInput.classList.add("is-valid");
+        }
+
+        updateSubmitButton();
+      });
+
+      function showFileError(msg) {
+        prescriptionError.textContent = msg;
+        fileInput.classList.add("is-invalid");
+        fileStatus.textContent = "";
+        processedFile = null;
+        updateSubmitButton();
+      }
+
+      // Initial state
+      submitBtn.disabled = true;
+
+      // ────────────────────────────────────────────────
+      //  Form submit handler
+      // ────────────────────────────────────────────────
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        if (submitBtn.disabled) return;
+
+        // ── Show loading state ────────────────────────────────
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<span class="spinner-border spinner-border-sm me-2"></span> Sending...';
+
+        const formData = new FormData();
+
+        formData.append(
+          "fullName",
+          document.getElementById("fullName").value.trim(),
+        );
+        formData.append("phone", phoneInput.getNumber());
+        formData.append(
+          "email",
+          document.getElementById("email").value.trim().toLowerCase(),
+        );
+        formData.append("subject", document.getElementById("subject").value);
+        formData.append(
+          "briefDescription",
+          document.getElementById("brief-description").value.trim(),
+        );
+
+        if (processedFile) {
+          formData.append(
+            "prescription",
+            processedFile,
+            processedFile.name || "prescription",
+          );
+        }
+
+        console.log(...formData);
+
+        try {
+          const response = await fetch("/api/MyStorageCartBusinessEnquiry", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              // "Authorization": "Bearer ..." // ← add if you later use JWT
+            },
+            body: formData,
+          });
+
+          const responseText = await response.text();
+
+          let data;
+          try {
+            data = JSON.parse(responseText);
+          } catch {
+            data = { message: responseText };
+          }
+
+          if (response.ok) {
+            // ── SUCCESS ──────────────────────────────────────────────
+            console.log("Success! Server returned:", data);
+
+            // Save full response in sessionStorage
+            sessionStorage.setItem(
+              "myStorageMartBusinessEnquiryResponse",
+              JSON.stringify(data),
+            );
+
+            // Show success message (briefly)
+            messageDiv.innerHTML =
+              '<div class="alert alert-success mt-3">Enquiry submitted successfully! Redirecting...</div>';
+
+            // Redirect to thank you page after short delay
+            setTimeout(() => {
+              window.location.href = "/thankyou.html"; // ← change to your actual thank-you page path
+              // or: window.location.href = `/thankyou?id=${data.id}`;
+            }, 1200);
+          } else {
+            // ── SERVER ERROR (400, 500, etc.) ────────────────────────
+            console.error("Server error:", data);
+
+            let errorMsg = "Submission failed. Please try again.";
+
+            if (response.status === 400 && data.errors) {
+              // Show first validation error
+              const firstError = Object.values(data.errors)[0]?.[0] || errorMsg;
+              errorMsg = `Please fix: ${firstError}`;
+            } else if (response.status === 500) {
+              errorMsg = "Server error occurred. Please try again later.";
+            } else {
+              errorMsg = data.message || errorMsg;
+            }
+
+            alert(errorMsg);
+            messageDiv.innerHTML = `<div class="alert alert-danger mt-3">${errorMsg}</div>`;
+          }
+        } catch (err) {
+          // ── NETWORK / FETCH ERROR ────────────────────────────────
+          console.error("Fetch error:", err);
+          const errorMsg =
+            "Could not connect to the server. Please check your internet and try again.";
+          alert(errorMsg);
+          messageDiv.innerHTML = `<div class="alert alert-danger mt-3">${errorMsg}</div>`;
+        } finally {
+          // ── Always reset button state ─────────────────────────────
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "Enquiry Now";
+        }
+      });
+    </script>
+  </body>
+</html>
