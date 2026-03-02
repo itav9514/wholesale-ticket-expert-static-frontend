@@ -42,96 +42,6 @@
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/mobile-responsive.css" rel="stylesheet" />
     <style>
-
-
-        .flight-search-wrapper {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border: 3px solid #2b6edc;
-    
-}
-
-.trip-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.tab-btn {
-    padding: 8px 20px;
-    border: none;
-    background: #f1f1f1;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-.tab-btn.active {
-    background: #2b6edc;
-    color: #fff;
-}
-
-.flight-search-wrapper label {
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.flight-search-wrapper .form-control,
-.flight-search-wrapper .form-select {
-    height: 55px;
-    border-radius: 8px;
-}
-
-.search-btn {
-    width: 100%;
-    height: 60px;
-    background: #2b6edc;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    transition: 0.3s ease;
-}
-
-.search-btn:hover {
-    background: #1f4fa8;
-}
-
-
-.autocomplete-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 300px;
-    overflow-y: auto;
-    background: white;
-    border: 1px solid #ccc;
-    border-top: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none; /* hidden by default */
-}
-
-.autocomplete-dropdown li {
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-.autocomplete-dropdown li:hover {
-    background-color: #f0f0f0;
-}
-
-.autocomplete-dropdown.show {
-    display: block;
-}
-
         @media (max-width: 767px) {
             .space-1 {
                 padding-top: 0;
@@ -180,200 +90,109 @@
             </div>
             <div class="col-lg-7 wow fadeInUp top-form" data-wow-delay="0.5s">
 
-                <div class="rounded h-100 d-flex align-items-center p-5">
+                <div class="flight-search-wrapper">
+                    <h2>
+                        Where Should<br>
+                        Do you like to go?
+                    </h2>
+                    <p>
+                        Discover amazing place with exclusive offer
+                    </p>
 
-                    <!--
-                    <form id="appointmentForm" class="needs-validation" novalidate>
+                    <form id="flightEnquiryForm" novalidate> <!-- novalidate = disable browser default validation -->
+
+                        <!-- Trip Type Tabs -->
+                        <div class="trip-tabs">
+                            <button type="button" class="tab-btn active" data-trip="oneway">One Way</button>
+                            <button type="button" class="tab-btn" data-trip="return">Return</button>
+                        </div>
+
                         <div class="row g-3">
-                            <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name"
-                                    style="height: 40px;" required minlength="2" maxlength="100">
-                                <div class="invalid-feedback">
-                                    Please enter your name (minimum 2 characters)
-                                </div>
+
+                            <!-- From -->
+                            <div class="col-md-4 position-relative">
+                                <label>From</label>
+                                <input type="text" class="form-control" id="from-input" name="from"
+                                    placeholder="City or Airport" autocomplete="off" required>
+                                <ul id="from-dropdown" class="autocomplete-dropdown"></ul>
+                                <div class="invalid-feedback">Please select a departure city or airport</div>
                             </div>
 
-                            <div class="col-12 col-sm-6">
-                                <select class="form-select" id="nationality" name="nationality" style="height: 55px;"
-                                    required>
-                                    <option value="">Select your nationality</option>
-                                    <option value="USA">USA</option>
-                                    <option value="UK">UK</option>
-                                    <option value="UAE">UAE</option>
-                                    <option value="Canada">Canada</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="India">India</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select your nationality
-                                </div>
+                            <!-- To -->
+                            <div class="col-md-4 position-relative">
+                                <label>To</label>
+                                <input type="text" class="form-control" id="to-input" name="to"
+                                    placeholder="City or Airport" autocomplete="off" required>
+                                <ul id="to-dropdown" class="autocomplete-dropdown"></ul>
+                                <div class="invalid-feedback">Please select a destination city or airport</div>
                             </div>
 
-                            <div class="col-12 col-sm-6">
+                            <!-- Departure & Return -->
+                            <div class="col-md-4">
+                                <label id="date-label">Departure - Return</label>
+                                <input type="text" class="form-control" id="travel-date" name="travel_date"
+                                    placeholder="Select travel dates" autocomplete="off" required>
+                                <div class="invalid-feedback">Please select valid travel date(s)</div>
+                            </div>
+
+                            <!-- Your Name -->
+                            <div class="col-md-4">
+                                <label>Your Name</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter full name" required>
+                                <div class="invalid-feedback">Name must be at least 2 characters</div>
+                            </div>
+
+                            <!-- Your Email -->
+                            <div class="col-md-4">
+                                <label>Your Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Your Email" style="height: 40px;" required>
-                                <div class="invalid-feedback">
-                                    Please enter a valid email address
+                                    placeholder="Enter email address" required>
+                                <div class="invalid-feedback">Please enter a valid email address</div>
+                            </div>
+
+                            <!-- Contact Number -->
+                            <div class="col-md-4">
+                                <label>Contact Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone"
+                                    placeholder="+91 888 453 449" required>
+                                <div class="invalid-feedback" id="phone-feedback">Please enter a valid phone number
                                 </div>
                             </div>
 
-                            <div class="col-12 col-sm-6">
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Mobile"
-                                    style="height: 40px;" required>
-                                <div class="invalid-feedback">
-                                    Please enter a valid phone number
-                                </div>
+                            <!-- Travellers & Class -->
+                            <div class="col-md-12">
+                                <label>Travellers & Class</label>
+                                <select class="form-select" name="travellers_class" id="travellers-class" required>
+                                    <option value="">Select Travellers & Cabin Class</option>
+                                    <option>1 Adult - Economy</option>
+                                    <option>2 Adults - Economy</option>
+                                    <option>1 Adult - Business</option>
+                                    <option>Family - Economy</option>
+                                </select>
+                                <div class="invalid-feedback">Please select travellers and class</div>
                             </div>
 
-                            <div class="col-12 col-sm-6">
-                                <div class="date" id="datePicker" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" id="appointmentDate"
-                                        name="appointmentDate" placeholder="Callback Date" data-target="#datePicker"
-                                        data-toggle="datetimepicker" style="height: 40px;" autocomplete="off" required>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please select a date
-                                </div>
+                            <!-- Search Button -->
+                            <div class="col-md-12">
+                                <button type="submit" class="search-btn" disabled>
+                                    Search →
+                                </button>
                             </div>
 
-                            <div class="col-12 col-sm-6">
-                                <div class="time" id="timePicker" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" id="appointmentTime"
-                                        name="appointmentTime" placeholder="Callback Time" data-target="#timePicker"
-                                        data-toggle="datetimepicker" style="height: 40px;" autocomplete="off" required>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please select a time
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <textarea class="form-control" id="description" name="description" rows="3"
-                                    placeholder="Describe your problem" required minlength="10"></textarea>
-                                <div class="invalid-feedback">
-                                    Please describe your problem (minimum 10 & maximum 1000 characters)
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-submit">
-
-                                    <div class="sub-1">
-                                        <button type="submit" id="submitBtn" disabled>
-                                            Search <i class="fab fa-long-arrow-right"></i>
-                                        </button>
-                                    </div>
-
-                                    <!-- <div class="sub-2 text-center">
-                                        <a href="tel:+1-855-888-0114"><img src="img/phone-icon.png"> +1-855-888-0114</a>
-                                    </div> -->
-
-                                </div>
-                                <div id="form-message" class="mt-3"></div>
-                            </div>
                         </div>
                     </form>
-                    -->
-
-                    <!-- Flight Search Enquiry Form -->
-<div class="flight-search-wrapper">
-
-
-
-
-    <form id="flightEnquiryForm" novalidate>  <!-- novalidate = disable browser default validation -->
-
-    <!-- Trip Type Tabs -->
-    <div class="trip-tabs">
-        <button type="button" class="tab-btn active" data-trip="oneway">One Way</button>
-        <button type="button" class="tab-btn" data-trip="return">Return</button>
-    </div>
-
-    <div class="row g-3">
-
-        <!-- From -->
-        <div class="col-md-4 position-relative">
-            <label>From</label>
-            <input type="text" class="form-control" id="from-input" name="from"
-                   placeholder="City or Airport" autocomplete="off" required>
-            <ul id="from-dropdown" class="autocomplete-dropdown"></ul>
-            <div class="invalid-feedback">Please select a departure city or airport</div>
-        </div>
-
-        <!-- To -->
-        <div class="col-md-4 position-relative">
-            <label>To</label>
-            <input type="text" class="form-control" id="to-input" name="to"
-                   placeholder="City or Airport" autocomplete="off" required>
-            <ul id="to-dropdown" class="autocomplete-dropdown"></ul>
-            <div class="invalid-feedback">Please select a destination city or airport</div>
-        </div>
-
-        <!-- Departure & Return -->
-        <div class="col-md-4">
-            <label id="date-label">Departure - Return</label>
-            <input type="text" class="form-control" id="travel-date" name="travel_date"
-                   placeholder="Select travel dates" autocomplete="off" required>
-            <div class="invalid-feedback">Please select valid travel date(s)</div>
-        </div>
-
-        <!-- Your Name -->
-        <div class="col-md-4">
-            <label>Your Name</label>
-            <input type="text" class="form-control" id="name" name="name"
-                   placeholder="Enter full name" required>
-            <div class="invalid-feedback">Name must be at least 2 characters</div>
-        </div>
-
-        <!-- Your Email -->
-        <div class="col-md-4">
-            <label>Your Email</label>
-            <input type="email" class="form-control" id="email" name="email"
-                   placeholder="Enter email address" required>
-            <div class="invalid-feedback">Please enter a valid email address</div>
-        </div>
-
-        <!-- Contact Number -->
-        <div class="col-md-4">
-            <label>Contact Number</label>
-            <input type="tel" class="form-control" id="phone" name="phone"
-                   placeholder="+91 888 453 449" required>
-            <div class="invalid-feedback" id="phone-feedback">Please enter a valid phone number</div>
-        </div>
-
-        <!-- Travellers & Class -->
-        <div class="col-md-12">
-            <label>Travellers & Class</label>
-            <select class="form-select" name="travellers_class" id="travellers-class" required>
-                <option value="">Select Travellers & Cabin Class</option>
-                <option>1 Adult - Economy</option>
-                <option>2 Adults - Economy</option>
-                <option>1 Adult - Business</option>
-                <option>Family - Economy</option>
-            </select>
-            <div class="invalid-feedback">Please select travellers and class</div>
-        </div>
-
-        <!-- Search Button -->
-        <div class="col-md-12">
-            <button type="submit" class="search-btn" disabled>
-                Search →
-            </button>
-        </div>
-
-    </div>
-</form>
 
 
 
 
 
-
-</div>
 
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
     <!-- Header End -->
 
@@ -916,337 +735,337 @@
 
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-    // ───────────────────────────────────────────────
-    // 1. DOM Elements
-    // ───────────────────────────────────────────────
-    const form = document.getElementById("flightEnquiryForm");
-    const submitBtn = form?.querySelector('.search-btn') || null;
-    const dateLabel = document.getElementById("date-label");
-    const dateInput = document.getElementById("travel-date");
-    const phoneInputField = document.getElementById("phone");
+            // ───────────────────────────────────────────────
+            // 1. DOM Elements
+            // ───────────────────────────────────────────────
+            const form = document.getElementById("flightEnquiryForm");
+            const submitBtn = form?.querySelector('.search-btn') || null;
+            const dateLabel = document.getElementById("date-label");
+            const dateInput = document.getElementById("travel-date");
+            const phoneInputField = document.getElementById("phone");
 
-    if (!form || !submitBtn) {
-        console.error("Critical elements missing");
-        return;
-    }
-
-    // ───────────────────────────────────────────────
-    // 2. Phone Input
-    // ───────────────────────────────────────────────
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        initialCountry: "in",
-        preferredCountries: ["in", "us", "gb", "ae", "sg"],
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.15/build/js/utils.js",
-        separateDialCode: true,
-        autoPlaceholder: "aggressive",
-        nationalMode: false,
-        formatOnDisplay: true,
-    });
-
-    // ───────────────────────────────────────────────
-    // 3. Flatpickr
-    // ───────────────────────────────────────────────
-    const fp = flatpickr(dateInput, {
-        mode: "range",
-        dateFormat: "Y-m-d",
-        minDate: "today",
-        altInput: true,
-        altFormat: "j M Y",
-        allowInput: true,
-        onChange: function(selectedDates, dateStr, instance) {
-            // Format display value
-            if (selectedDates.length === 1) {
-                instance.element.value = instance.formatDate(selectedDates[0], "j M Y");
-            } else if (selectedDates.length === 2) {
-                instance.element.value =
-                    instance.formatDate(selectedDates[0], "j M Y") +
-                    " – " +
-                    instance.formatDate(selectedDates[1], "j M Y");
-            } else {
-                instance.element.value = "";
+            if (!form || !submitBtn) {
+                console.error("Critical elements missing");
+                return;
             }
-            markInteracted(dateInput);
-        },
-    });
 
-    // ───────────────────────────────────────────────
-    // 4. Date Mode & Label
-    // ───────────────────────────────────────────────
-    function updateDateMode() {
-        const activeTab = document.querySelector('.tab-btn.active');
-        const isReturn = activeTab && activeTab.dataset.trip === "return";
+            // ───────────────────────────────────────────────
+            // 2. Phone Input
+            // ───────────────────────────────────────────────
+            const phoneInput = window.intlTelInput(phoneInputField, {
+                initialCountry: "in",
+                preferredCountries: ["in", "us", "gb", "ae", "sg"],
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.15/build/js/utils.js",
+                separateDialCode: true,
+                autoPlaceholder: "aggressive",
+                nationalMode: false,
+                formatOnDisplay: true,
+            });
 
-        if (isReturn) {
-            fp.set("mode", "range");
-            dateInput.placeholder = "Departure – Return";
-            if (dateLabel) dateLabel.textContent = "Departure - Return";
-        } else {
-            fp.set("mode", "single");
-            dateInput.placeholder = "Departure Date";
-            if (dateLabel) dateLabel.textContent = "Departure Date";
+            // ───────────────────────────────────────────────
+            // 3. Flatpickr
+            // ───────────────────────────────────────────────
+            const fp = flatpickr(dateInput, {
+                mode: "range",
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                altInput: true,
+                altFormat: "j M Y",
+                allowInput: true,
+                onChange: function (selectedDates, dateStr, instance) {
+                    // Format display value
+                    if (selectedDates.length === 1) {
+                        instance.element.value = instance.formatDate(selectedDates[0], "j M Y");
+                    } else if (selectedDates.length === 2) {
+                        instance.element.value =
+                            instance.formatDate(selectedDates[0], "j M Y") +
+                            " – " +
+                            instance.formatDate(selectedDates[1], "j M Y");
+                    } else {
+                        instance.element.value = "";
+                    }
+                    markInteracted(dateInput);
+                },
+            });
 
-            // Force single date mode: remove second date if present
-            if (fp.selectedDates.length > 1) {
-                fp.setDate(fp.selectedDates[0], true);
-            }
-        }
+            // ───────────────────────────────────────────────
+            // 4. Date Mode & Label
+            // ───────────────────────────────────────────────
+            function updateDateMode() {
+                const activeTab = document.querySelector('.tab-btn.active');
+                const isReturn = activeTab && activeTab.dataset.trip === "return";
 
-        markInteracted(dateInput);
-    }
+                if (isReturn) {
+                    fp.set("mode", "range");
+                    dateInput.placeholder = "Departure – Return";
+                    if (dateLabel) dateLabel.textContent = "Departure - Return";
+                } else {
+                    fp.set("mode", "single");
+                    dateInput.placeholder = "Departure Date";
+                    if (dateLabel) dateLabel.textContent = "Departure Date";
 
-    const tabs = document.querySelectorAll('.tab-btn');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(btn => btn.classList.remove('active'));
-            tab.classList.add('active');
-            updateDateMode();
-        });
-    });
-
-    updateDateMode();
-
-    // ───────────────────────────────────────────────
-    // 5. Autocomplete (complete version)
-    // ───────────────────────────────────────────────
-    const apiUrl = '/cms/api_airport_dropdown/airports/';
-
-    function setupAutocomplete(inputId, dropdownId) {
-        const input = document.getElementById(inputId);
-        const dropdown = document.getElementById(dropdownId);
-        if (!input || !dropdown) return;
-
-        let debounceTimer;
-        input.addEventListener('input', () => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(async () => {
-                const query = input.value.trim();
-                if (query.length < 2) {
-                    dropdown.innerHTML = '';
-                    dropdown.classList.remove('show');
-                    markInteracted(input);
-                    return;
+                    // Force single date mode: remove second date if present
+                    if (fp.selectedDates.length > 1) {
+                        fp.setDate(fp.selectedDates[0], true);
+                    }
                 }
 
-                try {
-                    const response = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}`);
-                    if (!response.ok) throw new Error("API error");
-                    const suggestions = await response.json();
+                markInteracted(dateInput);
+            }
 
-                    dropdown.innerHTML = '';
-                    suggestions.forEach(sugg => {
-                        const li = document.createElement('li');
-                        li.textContent = sugg.label;
-                        li.addEventListener('click', () => {
-                            input.value = sugg.label;
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(btn => btn.classList.remove('active'));
+                    tab.classList.add('active');
+                    updateDateMode();
+                });
+            });
+
+            updateDateMode();
+
+            // ───────────────────────────────────────────────
+            // 5. Autocomplete (complete version)
+            // ───────────────────────────────────────────────
+            const apiUrl = '/cms/api_airport_dropdown/airports/';
+
+            function setupAutocomplete(inputId, dropdownId) {
+                const input = document.getElementById(inputId);
+                const dropdown = document.getElementById(dropdownId);
+                if (!input || !dropdown) return;
+
+                let debounceTimer;
+                input.addEventListener('input', () => {
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(async () => {
+                        const query = input.value.trim();
+                        if (query.length < 2) {
                             dropdown.innerHTML = '';
                             dropdown.classList.remove('show');
                             markInteracted(input);
-                        });
-                        dropdown.appendChild(li);
-                    });
+                            return;
+                        }
 
-                    if (suggestions.length > 0) {
-                        dropdown.classList.add('show');
-                    }
-                } catch (err) {
-                    console.error("Autocomplete error:", err);
-                }
-            }, 300);
-        });
+                        try {
+                            const response = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}`);
+                            if (!response.ok) throw new Error("API error");
+                            const suggestions = await response.json();
 
-        document.addEventListener('click', e => {
-            if (!input.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('show');
-            }
-        });
-    }
+                            dropdown.innerHTML = '';
+                            suggestions.forEach(sugg => {
+                                const li = document.createElement('li');
+                                li.textContent = sugg.label;
+                                li.addEventListener('click', () => {
+                                    input.value = sugg.label;
+                                    dropdown.innerHTML = '';
+                                    dropdown.classList.remove('show');
+                                    markInteracted(input);
+                                });
+                                dropdown.appendChild(li);
+                            });
 
-    setupAutocomplete('from-input', 'from-dropdown');
-    setupAutocomplete('to-input', 'to-dropdown');
-
-    // ───────────────────────────────────────────────
-    // 6. STRICT VALIDATION LOGIC
-    // ───────────────────────────────────────────────
-    function validateField(field) {
-        if (!field) return false;
-
-        let isValid = false;
-        let errorElement = field.nextElementSibling?.classList.contains('invalid-feedback')
-            ? field.nextElementSibling : null;
-
-        // Special strict logic for date field
-        if (field.id === 'travel-date') {
-            const activeTab = document.querySelector('.tab-btn.active');
-            const isReturn = activeTab && activeTab.dataset.trip === "return";
-
-            const selectedCount = fp.selectedDates.length;
-
-            if (isReturn) {
-                // Return trip: must have EXACTLY 2 dates
-                isValid = selectedCount === 2;
-                if (errorElement) {
-                    errorElement.textContent = selectedCount === 0 ? "Please select departure and return dates" :
-                                               selectedCount === 1 ? "Please select return date" :
-                                               "Invalid date selection";
-                }
-            } else {
-                // One Way: must have EXACTLY 1 date
-                isValid = selectedCount === 1;
-                if (errorElement) {
-                    errorElement.textContent = selectedCount === 0 ? "Please select departure date" :
-                                               "Only one date required for one-way trip";
-                }
-            }
-        }
-        // Other fields
-        else {
-            switch (field.id) {
-                case 'from-input':
-                case 'to-input':
-                    isValid = field.value.trim().length >= 2;
-                    break;
-                case 'name':
-                    isValid = field.value.trim().length >= 2;
-                    break;
-                case 'email':
-                    isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
-                    break;
-                case 'phone':
-                    isValid = phoneInput.isValidNumber();
-                    if (errorElement) {
-                        errorElement.textContent = isValid ? "" : "Please enter a valid phone number";
-                    }
-                    break;
-                case 'travellers-class':
-                    isValid = field.value !== "";
-                    break;
-                default:
-                    isValid = field.value.trim() !== "";
-            }
-        }
-
-        // Apply visual feedback only after interaction
-        if (field.dataset.interacted === "true") {
-            field.classList.toggle("is-valid", isValid);
-            field.classList.toggle("is-invalid", !isValid);
-            if (errorElement) {
-                errorElement.style.display = isValid ? "none" : "block";
-            }
-        }
-
-        updateSubmitState();
-        return isValid;
-    }
-
-    function updateSubmitState() {
-        if (!submitBtn) return;
-
-        const fields = ['from-input', 'to-input', 'travel-date', 'name', 'email', 'phone', 'travellers-class'];
-        const allValid = fields.every(id => {
-            const field = document.getElementById(id);
-            return field && field.classList.contains("is-valid");
-        });
-
-        submitBtn.disabled = !allValid;
-    }
-
-    function markInteracted(field) {
-        if (field) {
-            field.dataset.interacted = "true";
-            validateField(field);
-        }
-    }
-
-    // ───────────────────────────────────────────────
-    // 7. Event Listeners
-    // ───────────────────────────────────────────────
-    form.querySelectorAll('input, select').forEach(field => {
-        ['input', 'change', 'blur'].forEach(eventName => {
-            field.addEventListener(eventName, () => markInteracted(field));
-        });
-    });
-
-    phoneInputField.addEventListener("countrychange", () => markInteracted(phoneInputField));
-
-    // ───────────────────────────────────────────────
-    // 8. Initial Validation
-    // ───────────────────────────────────────────────
-    form.querySelectorAll('input, select').forEach(field => {
-        if (field.value.trim() || (field.id === 'travel-date' && fp.selectedDates.length > 0)) {
-            markInteracted(field);
-        }
-    });
-
-    submitBtn.disabled = true;
-
-    // ───────────────────────────────────────────────
-    // 9. Form Submission
-    // ───────────────────────────────────────────────
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        if (submitBtn.disabled) return;
-
-        // Force validation on all fields
-        form.querySelectorAll('input, select').forEach(f => markInteracted(f));
-
-        if (!submitBtn.disabled) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
-
-            const formData = {
-                trip_type: document.querySelector('.tab-btn.active').dataset.trip,
-                from: document.getElementById('from-input').value.trim(),
-                to: document.getElementById('to-input').value.trim(),
-                travel_date: dateInput.value.trim(),
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: phoneInput.getNumber(),
-                travellers_class: document.getElementById('travellers-class').value,
-            };
-
-            console.log("Submitting:", formData);
-
-            try {
-                const response = await fetch("/cms/api/flight-enquiry/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formData),
+                            if (suggestions.length > 0) {
+                                dropdown.classList.add('show');
+                            }
+                        } catch (err) {
+                            console.error("Autocomplete error:", err);
+                        }
+                    }, 300);
                 });
 
-                const data = await response.json();
-
-                if (response.ok) {
-                    alert("Search request sent successfully!\nWe will contact you soon.");
-                    form.reset();
-                    fp.clear();
-                    phoneInput.setCountry("in");
-                    updateDateMode();
-
-                    // Reset validation
-                    form.querySelectorAll('.is-valid, .is-invalid').forEach(el => {
-                        el.classList.remove('is-valid', 'is-invalid');
-                    });
-                    form.querySelectorAll('.invalid-feedback').forEach(el => {
-                        el.style.display = "none";
-                    });
-                } else {
-                    alert(data.message || "Something went wrong.");
-                }
-            } catch (err) {
-                alert("Network error. Please try again.");
-            } finally {
-                submitBtn.innerHTML = "Search →";
-                submitBtn.disabled = false;
-                updateSubmitState();
+                document.addEventListener('click', e => {
+                    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
             }
-        }
-    });
-});
-</script>
-   
+
+            setupAutocomplete('from-input', 'from-dropdown');
+            setupAutocomplete('to-input', 'to-dropdown');
+
+            // ───────────────────────────────────────────────
+            // 6. STRICT VALIDATION LOGIC
+            // ───────────────────────────────────────────────
+            function validateField(field) {
+                if (!field) return false;
+
+                let isValid = false;
+                let errorElement = field.nextElementSibling?.classList.contains('invalid-feedback')
+                    ? field.nextElementSibling : null;
+
+                // Special strict logic for date field
+                if (field.id === 'travel-date') {
+                    const activeTab = document.querySelector('.tab-btn.active');
+                    const isReturn = activeTab && activeTab.dataset.trip === "return";
+
+                    const selectedCount = fp.selectedDates.length;
+
+                    if (isReturn) {
+                        // Return trip: must have EXACTLY 2 dates
+                        isValid = selectedCount === 2;
+                        if (errorElement) {
+                            errorElement.textContent = selectedCount === 0 ? "Please select departure and return dates" :
+                                selectedCount === 1 ? "Please select return date" :
+                                    "Invalid date selection";
+                        }
+                    } else {
+                        // One Way: must have EXACTLY 1 date
+                        isValid = selectedCount === 1;
+                        if (errorElement) {
+                            errorElement.textContent = selectedCount === 0 ? "Please select departure date" :
+                                "Only one date required for one-way trip";
+                        }
+                    }
+                }
+                // Other fields
+                else {
+                    switch (field.id) {
+                        case 'from-input':
+                        case 'to-input':
+                            isValid = field.value.trim().length >= 2;
+                            break;
+                        case 'name':
+                            isValid = field.value.trim().length >= 2;
+                            break;
+                        case 'email':
+                            isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+                            break;
+                        case 'phone':
+                            isValid = phoneInput.isValidNumber();
+                            if (errorElement) {
+                                errorElement.textContent = isValid ? "" : "Please enter a valid phone number";
+                            }
+                            break;
+                        case 'travellers-class':
+                            isValid = field.value !== "";
+                            break;
+                        default:
+                            isValid = field.value.trim() !== "";
+                    }
+                }
+
+                // Apply visual feedback only after interaction
+                if (field.dataset.interacted === "true") {
+                    field.classList.toggle("is-valid", isValid);
+                    field.classList.toggle("is-invalid", !isValid);
+                    if (errorElement) {
+                        errorElement.style.display = isValid ? "none" : "block";
+                    }
+                }
+
+                updateSubmitState();
+                return isValid;
+            }
+
+            function updateSubmitState() {
+                if (!submitBtn) return;
+
+                const fields = ['from-input', 'to-input', 'travel-date', 'name', 'email', 'phone', 'travellers-class'];
+                const allValid = fields.every(id => {
+                    const field = document.getElementById(id);
+                    return field && field.classList.contains("is-valid");
+                });
+
+                submitBtn.disabled = !allValid;
+            }
+
+            function markInteracted(field) {
+                if (field) {
+                    field.dataset.interacted = "true";
+                    validateField(field);
+                }
+            }
+
+            // ───────────────────────────────────────────────
+            // 7. Event Listeners
+            // ───────────────────────────────────────────────
+            form.querySelectorAll('input, select').forEach(field => {
+                ['input', 'change', 'blur'].forEach(eventName => {
+                    field.addEventListener(eventName, () => markInteracted(field));
+                });
+            });
+
+            phoneInputField.addEventListener("countrychange", () => markInteracted(phoneInputField));
+
+            // ───────────────────────────────────────────────
+            // 8. Initial Validation
+            // ───────────────────────────────────────────────
+            form.querySelectorAll('input, select').forEach(field => {
+                if (field.value.trim() || (field.id === 'travel-date' && fp.selectedDates.length > 0)) {
+                    markInteracted(field);
+                }
+            });
+
+            submitBtn.disabled = true;
+
+            // ───────────────────────────────────────────────
+            // 9. Form Submission
+            // ───────────────────────────────────────────────
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                if (submitBtn.disabled) return;
+
+                // Force validation on all fields
+                form.querySelectorAll('input, select').forEach(f => markInteracted(f));
+
+                if (!submitBtn.disabled) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
+
+                    const formData = {
+                        trip_type: document.querySelector('.tab-btn.active').dataset.trip,
+                        from: document.getElementById('from-input').value.trim(),
+                        to: document.getElementById('to-input').value.trim(),
+                        travel_date: dateInput.value.trim(),
+                        name: document.getElementById('name').value.trim(),
+                        email: document.getElementById('email').value.trim(),
+                        phone: phoneInput.getNumber(),
+                        travellers_class: document.getElementById('travellers-class').value,
+                    };
+
+                    console.log("Submitting:", formData);
+
+                    try {
+                        const response = await fetch("/cms/api/flight-enquiry/", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(formData),
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            alert("Search request sent successfully!\nWe will contact you soon.");
+                            form.reset();
+                            fp.clear();
+                            phoneInput.setCountry("in");
+                            updateDateMode();
+
+                            // Reset validation
+                            form.querySelectorAll('.is-valid, .is-invalid').forEach(el => {
+                                el.classList.remove('is-valid', 'is-invalid');
+                            });
+                            form.querySelectorAll('.invalid-feedback').forEach(el => {
+                                el.style.display = "none";
+                            });
+                        } else {
+                            alert(data.message || "Something went wrong.");
+                        }
+                    } catch (err) {
+                        alert("Network error. Please try again.");
+                    } finally {
+                        submitBtn.innerHTML = "Search →";
+                        submitBtn.disabled = false;
+                        updateSubmitState();
+                    }
+                }
+            });
+        });
+    </script>
+
 
 </body>
 
@@ -1254,5 +1073,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 </html>
-
-
