@@ -507,8 +507,8 @@
 }
 
 .footer .copyright {
-    padding: 25px 0;
-    font-size: 15px;
+    padding: 15px 0;
+    font-size: 0;
     border-top: 1px solid rgba(256, 256, 256, .1);
 }
 
@@ -1219,7 +1219,7 @@ h5.text-white {
 }
 
 .header-carousel.owl-carousel .owl-item img {
-    height: 610px !important;
+    height: 540px !important;
     object-fit: cover;
     border-radius: 10px 0 0 10px
 }
@@ -1525,14 +1525,21 @@ button:disabled {
     font-weight: 600;
 }
 
-.flight-search-wrapper {
+.borderall {
     background: #ffffff;
+    padding: 0 5px 19px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.flight-search-wrapper {
+    /* background: #ffffff;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
     /* border: 3px solid #2b6edc; */
-    margin-left: 44px;
-    margin-top: 35px;
+    margin-left: 0;
+    margin-top: 0;
 }
 
 .flight-search-wrapper h2 {
@@ -1552,12 +1559,13 @@ button:disabled {
 .trip-tabs {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .tab-btn {
-    padding: 8px 20px;
+    padding: 3px 11px 5px;
     border: none;
+    font-size: 15px;
     background: #f1f1f1;
     border-radius: 6px;
     cursor: pointer;
@@ -1567,7 +1575,7 @@ button:disabled {
 .tab-btn.active {
     background: #143D8C;
     color: #fff;
-    font-weight:600;
+    font-weight: 600;
 }
 
 .flight-search-wrapper label {
@@ -1586,7 +1594,7 @@ button:disabled {
     border-radius: 8px;
     padding: 17px 10px 0;
     border: 1px solid #7D7D7D;
-    font-size:14px;
+    font-size: 14px;
     color: #5D5E60;
 
 }
@@ -1594,7 +1602,7 @@ button:disabled {
 .flight-search-wrapper .form-control::-webkit-input-placeholder,
 .flight-search-wrapper .form-select::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-  color: #5D5E60;
+    color: #5D5E60;
 }
 
 .flight-search-wrapper .form-control::-moz-placeholder,
@@ -1612,7 +1620,7 @@ button:disabled {
 .flight-search-wrapper .form-control:-moz-placeholder,
 .flight-search-wrapper .form-select:-moz-placeholder {
     /* Chrome/Opera/Safari */
-   color: #5D5E60;
+    color: #5D5E60;
 }
 
 .search-btn {
@@ -1751,14 +1759,28 @@ button:disabled {
 }
 
 @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-3px); }
-    50% { transform: translateX(3px); }
-    75% { transform: translateX(-3px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-3px);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
-.pax-btn{
+.pax-btn {
     background-color: #00154b;
     color: #fff;
     border: none;
@@ -1774,7 +1796,7 @@ button:disabled {
     font-weight: 500;
     color: #000000;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .why h2 hr {
@@ -1840,3 +1862,9 @@ button:disabled {
 .form-control:read-only {
     background-color: #fff;
 }
+
+.footer .copyright p {
+    text-align: center;
+    font-size: 15px;
+}
+.welcome{}
