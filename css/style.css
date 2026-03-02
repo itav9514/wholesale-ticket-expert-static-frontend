@@ -1650,3 +1650,35 @@ button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+
+
+.pax-error {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 6px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.pax-error.show {
+    display: block;
+}
+
+.pax-error.shake {
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+}
+
+.pax-btn{
+    background-color: #00154b;
+    color: #fff;
+    border: none;
+}

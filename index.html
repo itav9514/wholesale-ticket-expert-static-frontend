@@ -43,11 +43,6 @@
     <link href="css/mobile-responsive.css" rel="stylesheet" />
     <style>
 
-
-
-
-
-
         @media (max-width: 767px) {
             .space-1 {
                 padding-top: 0;
@@ -231,10 +226,11 @@
         </select>
 
         <!-- Done Button -->
-        <button type="button" class="btn btn-danger w-100" id="done-passengers">Done</button>
+        <button type="button" class="btn pax-btn w-100" id="done-passengers">Done</button>
     </div>
 
     <div class="invalid-feedback">Please select travellers and class</div>
+    <div id="pax-error" class="pax-error"></div>
 </div>
 
         <!-- Search Button -->
@@ -519,6 +515,9 @@
 
 
 
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -559,23 +558,31 @@ document.addEventListener("DOMContentLoaded", function () {
         altInput: true,
         altFormat: "j M Y",
         allowInput: true,
+
         onChange: function(selectedDates, dateStr, instance) {
-            if (selectedDates.length === 1) {
-                instance.element.value = instance.formatDate(selectedDates[0], "j M Y");
-            } else if (selectedDates.length === 2) {
-                instance.element.value =
-                    instance.formatDate(selectedDates[0], "j M Y") +
-                    " – " +
-                    instance.formatDate(selectedDates[1], "j M Y");
-            } else {
-                instance.element.value = "";
-            }
-            markInteracted(dateInput);
-        },
+
+    visibleDateInput.dataset.interacted = "true";
+
+    if (selectedDates.length === 1) {
+        instance.element.value = instance.formatDate(selectedDates[0], "j M Y");
+    } else if (selectedDates.length === 2) {
+        instance.element.value =
+            instance.formatDate(selectedDates[0], "j M Y") +
+            " – " +
+            instance.formatDate(selectedDates[1], "j M Y");
+    } else {
+        instance.element.value = "";
+    }
+
+    validateField(visibleDateInput);
+},
+
     });
 
+    const visibleDateInput = fp.altInput || dateInput;
+
     // ───────────────────────────────────────────────
-    // 4. Date Mode & Label
+    // 4. Date Mode & Label + Immediate Validation on Tab Change
     // ───────────────────────────────────────────────
     function updateDateMode() {
         const activeTab = document.querySelector('.tab-btn.active');
@@ -594,7 +601,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 fp.setDate(fp.selectedDates[0], true);
             }
         }
+
+        // Immediately validate date field on tab change (so error shows right away if needed)
         markInteracted(dateInput);
+        validateField(dateInput);
     }
 
     const tabs = document.querySelectorAll('.tab-btn');
@@ -608,67 +618,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateDateMode();
 
-    // ───────────────────────────────────────────────
-    // 5. Autocomplete
-    // ───────────────────────────────────────────────
-    const apiUrl = '/cms/api_airport_dropdown/airports/';
-
-    function setupAutocomplete(inputId, dropdownId) {
-        const input = document.getElementById(inputId);
-        const dropdown = document.getElementById(dropdownId);
-        if (!input || !dropdown) return;
-
-        let debounceTimer;
-        input.addEventListener('input', () => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(async () => {
-                const query = input.value.trim();
-                if (query.length < 2) {
-                    dropdown.innerHTML = '';
-                    dropdown.classList.remove('show');
-                    markInteracted(input);
-                    return;
-                }
-
-                try {
-                    const response = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}`);
-                    if (!response.ok) throw new Error("API error");
-                    const suggestions = await response.json();
-
-                    dropdown.innerHTML = '';
-                    suggestions.forEach(sugg => {
-                        const li = document.createElement('li');
-                        li.textContent = sugg.label;
-                        li.addEventListener('click', () => {
-                            input.value = sugg.label;
-                            dropdown.innerHTML = '';
-                            dropdown.classList.remove('show');
-                            markInteracted(input);
-                        });
-                        dropdown.appendChild(li);
-                    });
-
-                    if (suggestions.length > 0) {
-                        dropdown.classList.add('show');
-                    }
-                } catch (err) {
-                    console.error("Autocomplete error:", err);
-                }
-            }, 300);
-        });
-
-        document.addEventListener('click', e => {
-            if (!input.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('show');
-            }
-        });
-    }
-
-    setupAutocomplete('from-input', 'from-dropdown');
-    setupAutocomplete('to-input', 'to-dropdown');
 
     // ───────────────────────────────────────────────
-    // 6. Validation
+    // 6. Validation (updated)
     // ───────────────────────────────────────────────
     function validateField(field) {
         if (!field) return false;
@@ -677,26 +629,47 @@ document.addEventListener("DOMContentLoaded", function () {
         let errorElement = field.nextElementSibling?.classList.contains('invalid-feedback')
             ? field.nextElementSibling : null;
 
-        if (field.id === 'travel-date') {
-            const activeTab = document.querySelector('.tab-btn.active');
-            const isReturn = activeTab && activeTab.dataset.trip === "return";
-            const selectedCount = fp.selectedDates.length;
 
-            if (isReturn) {
-                isValid = selectedCount === 2;
-                if (errorElement) {
-                    errorElement.textContent = selectedCount === 0 ? "Please select departure and return dates" :
-                                               selectedCount === 1 ? "Please select return date" :
-                                               "Invalid date selection";
+if (field.id === 'travel-date' || field === visibleDateInput) {
+
+    const activeTab = document.querySelector('.tab-btn.active');
+    const isReturn = activeTab && activeTab.dataset.trip === "return";
+    const selectedCount = fp.selectedDates.length;
+
+    if (isReturn) {
+        isValid = selectedCount === 2;
+    } else {
+        isValid = selectedCount === 1;
+    }
+
+    const interacted = visibleDateInput.dataset.interacted === "true";
+
+    if (interacted) {
+
+        visibleDateInput.classList.toggle("is-valid", isValid);
+        visibleDateInput.classList.toggle("is-invalid", !isValid);
+
+        if (errorElement) {
+            if (!isValid) {
+
+                if (isReturn) {
+                    if (selectedCount === 0) {
+                        errorElement.textContent = "Please select departure and return dates";
+                    } else if (selectedCount === 1) {
+                        errorElement.textContent = "Please select return date";
+                    }
+                } else {
+                    errorElement.textContent = "Please select departure date";
                 }
+
+                errorElement.style.display = "block";
             } else {
-                isValid = selectedCount === 1;
-                if (errorElement) {
-                    errorElement.textContent = selectedCount === 0 ? "Please select departure date" :
-                                               "Only one date required for one-way trip";
-                }
+                errorElement.style.display = "none";
             }
-        } else {
+        }
+    }
+}           else {
+            // Other fields (unchanged)
             switch (field.id) {
                 case 'from-input':
                 case 'to-input':
@@ -718,36 +691,59 @@ document.addEventListener("DOMContentLoaded", function () {
                 default:
                     isValid = field.value.trim() !== "";
             }
-        }
 
-        if (field.dataset.interacted === "true") {
-            field.classList.toggle("is-valid", isValid);
-            field.classList.toggle("is-invalid", !isValid);
-            if (errorElement) errorElement.style.display = isValid ? "none" : "block";
+            if (field.dataset.interacted === "true") {
+                field.classList.toggle("is-valid", isValid);
+                field.classList.toggle("is-invalid", !isValid);
+                if (errorElement) errorElement.style.display = isValid ? "none" : "block";
+            }
         }
 
         updateSubmitState();
         return isValid;
     }
 
+
     function updateSubmitState() {
-        if (!submitBtn) return;
 
-        const fields = ['from-input', 'to-input', 'travel-date', 'name', 'email', 'phone', 'travellers-class'];
-        const allValid = fields.every(id => {
-            const field = document.getElementById(id);
-            return field && field.classList.contains("is-valid");
-        });
+    if (!submitBtn) return;
 
-        submitBtn.disabled = !allValid;
-    }
+    const isFromValid = document.getElementById('from-input')?.classList.contains("is-valid");
+    const isToValid = document.getElementById('to-input')?.classList.contains("is-valid");
+    const isNameValid = document.getElementById('name')?.classList.contains("is-valid");
+    const isEmailValid = document.getElementById('email')?.classList.contains("is-valid");
+    const isPhoneValid = document.getElementById('phone')?.classList.contains("is-valid");
+    const isTravellersValid = document.getElementById('travellers-class')?.classList.contains("is-valid");
+
+    // 🔥 Date validation based on flatpickr state
+    const activeTab = document.querySelector('.tab-btn.active');
+    const isReturn = activeTab && activeTab.dataset.trip === "return";
+    const selectedCount = fp.selectedDates.length;
+
+    const isDateValid = isReturn
+        ? selectedCount === 2
+        : selectedCount === 1;
+
+    const allValid =
+        isFromValid &&
+        isToValid &&
+        isNameValid &&
+        isEmailValid &&
+        isPhoneValid &&
+        isTravellersValid &&
+        isDateValid;
+
+    submitBtn.disabled = !allValid;
+}
+
+
 
     function markInteracted(field) {
-        if (field) {
-            field.dataset.interacted = "true";
-            validateField(field);
-        }
-    }
+    if (!field) return;
+
+    field.dataset.interacted = "true";
+    validateField(field);
+}
 
     // Event listeners
     form.querySelectorAll('input, select').forEach(field => {
@@ -758,7 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     phoneInputField.addEventListener("countrychange", () => markInteracted(phoneInputField));
 
-    // Initial validation
+    // Initial validation for pre-filled values
     form.querySelectorAll('input, select').forEach(field => {
         if (field.value.trim() || (field.id === 'travel-date' && fp.selectedDates.length > 0)) {
             markInteracted(field);
@@ -766,6 +762,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     submitBtn.disabled = true;
+
+
+        const paxError = document.getElementById('pax-error');
+
+function showPaxError(message) {
+    paxError.textContent = message;
+    paxError.classList.add('show', 'shake');
+
+    setTimeout(() => {
+        paxError.classList.remove('shake');
+    }, 300);
+
+    setTimeout(() => {
+        paxError.classList.remove('show');
+    }, 3000);
+}
 
     // ───────────────────────────────────────────────
     // Passenger & Class Selector
@@ -776,7 +788,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const doneBtn = document.getElementById("done-passengers");
     const cabinClassSelect = document.getElementById("cabin-class");
 
-    // Declare paxCounters in outer scope so it's available in submit handler
     const paxCounters = {
         adults: 1,
         children: 0,
@@ -794,6 +805,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 passengerSelector.style.display = 'none';
             }
         });
+
+        /*
 
         document.querySelectorAll('.increment, .decrement').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -816,6 +829,70 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
+        */
+
+
+
+        document.querySelectorAll('.increment, .decrement').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        const type = btn.dataset.type;
+        const countEl = btn.parentElement.querySelector('.count');
+        let value = parseInt(countEl.textContent);
+        let invalidAttempt = false;
+
+        if (btn.classList.contains('increment')) {
+
+            if (type === 'adults') {
+                if (value < 9) {
+                    value++;
+                } else {
+                    invalidAttempt = "Maximum 9 adults allowed";
+                }
+            }
+
+            if (type === 'children') {
+                if (value < 8) {
+                    value++;
+                } else {
+                    invalidAttempt = "Maximum 8 children allowed";
+                }
+            }
+
+            if (type === 'infants') {
+                if (value < paxCounters.adults) {
+                    value++;
+                } else {
+                    invalidAttempt = "Infants cannot exceed number of adults";
+                }
+            }
+
+        } else {
+
+            if (type === 'adults') {
+                if (value > 1) {
+                    value--;
+                } else {
+                    invalidAttempt = "At least 1 adult is required";
+                }
+            }
+
+            if (type === 'children' && value > 0) value--;
+            if (type === 'infants' && value > 0) value--;
+        }
+
+        if (invalidAttempt) {
+            showPaxError(invalidAttempt);
+            return;
+        }
+
+        countEl.textContent = value;
+        paxCounters[type] = value;
+
+    });
+});
+
+
         cabinClassSelect.addEventListener('change', () => {
             paxCounters.cabin = cabinClassSelect.value;
         });
@@ -835,7 +912,6 @@ document.addEventListener("DOMContentLoaded", function () {
             updateSubmitState();
         });
 
-        // Default values
         travellersDisplay.value = "1 Adult - Economy";
         travellersHidden.value = "1 Pax - Economy";
         markInteracted(travellersHidden);
@@ -912,8 +988,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+
+
+
 });
 </script>
+
+
+
 
 
 
