@@ -44,117 +44,9 @@
     <style>
 
 
-        .flight-search-wrapper {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border: 3px solid #2b6edc;
-    
-}
-
-.trip-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.tab-btn {
-    padding: 8px 20px;
-    border: none;
-    background: #f1f1f1;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-.tab-btn.active {
-    background: #2b6edc;
-    color: #fff;
-}
-
-.flight-search-wrapper label {
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.flight-search-wrapper .form-control,
-.flight-search-wrapper .form-select {
-    height: 55px;
-    border-radius: 8px;
-}
-
-.search-btn {
-    width: 100%;
-    height: 60px;
-    background: #2b6edc;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    transition: 0.3s ease;
-}
-
-.search-btn:hover {
-    background: #1f4fa8;
-}
-
-
-.autocomplete-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 300px;
-    overflow-y: auto;
-    background: white;
-    border: 1px solid #ccc;
-    border-top: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none; /* hidden by default */
-}
-
-.autocomplete-dropdown li {
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-.autocomplete-dropdown li:hover {
-    background-color: #f0f0f0;
-}
-
-.autocomplete-dropdown.show {
-    display: block;
-}
 
 
 
-.passenger-selector {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border: 1px solid #ced4da;
-    border-radius: 0.375rem;
-    max-width: 340px;
-}
-
-.passenger-selector .count {
-    min-width: 30px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.passenger-selector .decrement:disabled,
-.passenger-selector .increment:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
 
         @media (max-width: 767px) {
             .space-1 {
@@ -213,96 +105,154 @@
                         Discover amazing place with exclusive offer
                     </p>
 
-                    <form id="flightEnquiryForm" novalidate> <!-- novalidate = disable browser default validation -->
-
-                        <!-- Trip Type Tabs -->
-                        <div class="trip-tabs">
-                            <button type="button" class="tab-btn active" data-trip="oneway">One Way</button>
-                            <button type="button" class="tab-btn" data-trip="return">Return</button>
-                        </div>
-
-                        <div class="row g-3">
-
-                            <!-- From -->
-                            <div class="col-md-4 position-relative">
-                                <label>From</label>
-                                <input type="text" class="form-control" id="from-input" name="from"
-                                    placeholder="City or Airport" autocomplete="off" required>
-                                <ul id="from-dropdown" class="autocomplete-dropdown"></ul>
-                                <div class="invalid-feedback">Please select a departure city or airport</div>
-                            </div>
-
-                            <!-- To -->
-                            <div class="col-md-4 position-relative">
-                                <label>To</label>
-                                <input type="text" class="form-control" id="to-input" name="to"
-                                    placeholder="City or Airport" autocomplete="off" required>
-                                <ul id="to-dropdown" class="autocomplete-dropdown"></ul>
-                                <div class="invalid-feedback">Please select a destination city or airport</div>
-                            </div>
-
-                            <!-- Departure & Return -->
-                            <div class="col-md-4">
-                                <label id="date-label">Departure - Return</label>
-                                <input type="text" class="form-control" id="travel-date" name="travel_date"
-                                    placeholder="Select travel dates" autocomplete="off" required>
-                                <div class="invalid-feedback">Please select valid travel date(s)</div>
-                            </div>
-
-                            <!-- Your Name -->
-                            <div class="col-md-4">
-                                <label>Your Name</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter full name" required>
-                                <div class="invalid-feedback">Name must be at least 2 characters</div>
-                            </div>
-
-                            <!-- Your Email -->
-                            <div class="col-md-4">
-                                <label>Your Email</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter email address" required>
-                                <div class="invalid-feedback">Please enter a valid email address</div>
-                            </div>
-
-                            <!-- Contact Number -->
-                            <div class="col-md-4">
-                                <label>Contact Number</label>
-                                <input type="tel" class="form-control" id="phone" name="phone"
-                                    placeholder="+91 888 453 449" required>
-                                <div class="invalid-feedback" id="phone-feedback">Please enter a valid phone number
-                                </div>
-                            </div>
-
-                            <!-- Travellers & Class -->
-                            <div class="col-md-12">
-                                <label>Travellers & Class</label>
-                                <select class="form-select" name="travellers_class" id="travellers-class" required>
-                                    <option value="">Select Travellers & Cabin Class</option>
-                                    <option>1 Adult - Economy</option>
-                                    <option>2 Adults - Economy</option>
-                                    <option>1 Adult - Business</option>
-                                    <option>Family - Economy</option>
-                                </select>
-                                <div class="invalid-feedback">Please select travellers and class</div>
-                            </div>
-
-                            <!-- Search Button -->
-                            <div class="col-md-12">
-                                <button type="submit" class="search-btn" disabled>
-                                    Search →
-                                </button>
-                            </div>
-
-                        </div>
-                    </form>
 
 
 
 
 
 
-                </div>
+    <form id="flightEnquiryForm" novalidate>  <!-- novalidate = disable browser default validation -->
+
+    <!-- Trip Type Tabs -->
+    <div class="trip-tabs">
+        <button type="button" class="tab-btn active" data-trip="oneway">One Way</button>
+        <button type="button" class="tab-btn" data-trip="return">Return</button>
+    </div>
+
+    <div class="row g-3">
+
+        <!-- From -->
+        <div class="col-md-4 position-relative">
+            <label>From</label>
+            <input type="text" class="form-control" id="from-input" name="from"
+                   placeholder="City or Airport" autocomplete="off" required>
+            <ul id="from-dropdown" class="autocomplete-dropdown"></ul>
+            <div class="invalid-feedback">Please select a departure city or airport</div>
+        </div>
+
+        <!-- To -->
+        <div class="col-md-4 position-relative">
+            <label>To</label>
+            <input type="text" class="form-control" id="to-input" name="to"
+                   placeholder="City or Airport" autocomplete="off" required>
+            <ul id="to-dropdown" class="autocomplete-dropdown"></ul>
+            <div class="invalid-feedback">Please select a destination city or airport</div>
+        </div>
+
+        <!-- Departure & Return -->
+        <div class="col-md-4">
+            <label id="date-label">Departure - Return</label>
+            <input type="text" class="form-control" id="travel-date" name="travel_date"
+                   placeholder="Select travel dates" autocomplete="off" required>
+            <div class="invalid-feedback">Please select valid travel date(s)</div>
+        </div>
+
+        <!-- Your Name -->
+        <div class="col-md-4">
+            <label>Your Name</label>
+            <input type="text" class="form-control" id="name" name="name"
+                   placeholder="Enter full name" required>
+            <div class="invalid-feedback">Name must be at least 2 characters</div>
+        </div>
+
+        <!-- Your Email -->
+        <div class="col-md-4">
+            <label>Your Email</label>
+            <input type="email" class="form-control" id="email" name="email"
+                   placeholder="Enter email address" required>
+            <div class="invalid-feedback">Please enter a valid email address</div>
+        </div>
+
+        <!-- Contact Number -->
+        <div class="col-md-4">
+            <label>Contact Number</label>
+            <input type="tel" class="form-control" id="phone" name="phone"
+                   placeholder="+91 888 453 449" required>
+            <div class="invalid-feedback" id="phone-feedback">Please enter a valid phone number</div>
+        </div>
+
+<!-- Travellers & Class -->
+<div class="col-md-12 position-relative">
+    <label>Travellers & Class</label>
+    <input type="text" class="form-control" id="travellers-class-display" 
+           placeholder="Select Travellers & Cabin Class" readonly required>
+    <input type="hidden" name="travellers_class" id="travellers-class" required>
+
+    <!-- Passenger & Class Selector Modal/Popover -->
+    <div id="passenger-selector" class="passenger-selector dropdown-menu p-4 shadow" style="display:none; width:320px; z-index:1000;">
+        <h6 class="mb-3">Select Passengers</h6>
+
+        <!-- Adults -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <strong>Adults</strong><br>
+                <small>Age 16+</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-outline-secondary btn-sm decrement" data-type="adults">-</button>
+                <span class="mx-3 count" data-type="adults">1</span>
+                <button type="button" class="btn btn-outline-secondary btn-sm increment" data-type="adults">+</button>
+            </div>
+        </div>
+
+        <!-- Children -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <strong>Children</strong><br>
+                <small>Age 2-15</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-outline-secondary btn-sm decrement" data-type="children">-</button>
+                <span class="mx-3 count" data-type="children">0</span>
+                <button type="button" class="btn btn-outline-secondary btn-sm increment" data-type="children">+</button>
+            </div>
+        </div>
+
+        <!-- Infants -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <strong>Infants</strong><br>
+                <small>Age 0-2</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-outline-secondary btn-sm decrement" data-type="infants">-</button>
+                <span class="mx-3 count" data-type="infants">0</span>
+                <button type="button" class="btn btn-outline-secondary btn-sm increment" data-type="infants">+</button>
+            </div>
+        </div>
+
+        <!-- Cabin Class -->
+        <h6 class="mb-2">Cabin Class</h6>
+        <select class="form-select mb-4" id="cabin-class">
+            <option value="Economy" selected>Economy</option>
+            <option value="Premium Economy">Premium Economy</option>
+            <option value="Business">Business</option>
+            <option value="First">First Class</option>
+        </select>
+
+        <!-- Done Button -->
+        <button type="button" class="btn btn-danger w-100" id="done-passengers">Done</button>
+    </div>
+
+    <div class="invalid-feedback">Please select travellers and class</div>
+</div>
+
+        <!-- Search Button -->
+        <div class="col-md-12">
+            <button type="submit" class="search-btn" disabled>
+                Search →
+            </button>
+        </div>
+
+    </div>
+</form>
+
+
+
+
+
+
+
 
             </div>
         </div>
@@ -848,11 +798,13 @@
     <script src="js/autocompleteDropdown.js"></script>
 
 
-<!--
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-=
+    // ───────────────────────────────────────────────
+    // 1. DOM Elements
+    // ───────────────────────────────────────────────
     const form = document.getElementById("flightEnquiryForm");
     const submitBtn = form?.querySelector('.search-btn') || null;
     const dateLabel = document.getElementById("date-label");
@@ -863,7 +815,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Critical elements missing");
         return;
     }
-=
+
+    // ───────────────────────────────────────────────
+    // 2. Phone Input
+    // ───────────────────────────────────────────────
     const phoneInput = window.intlTelInput(phoneInputField, {
         initialCountry: "in",
         preferredCountries: ["in", "us", "gb", "ae", "sg"],
@@ -874,7 +829,9 @@ document.addEventListener("DOMContentLoaded", function () {
         formatOnDisplay: true,
     });
 
-
+    // ───────────────────────────────────────────────
+    // 3. Flatpickr
+    // ───────────────────────────────────────────────
     const fp = flatpickr(dateInput, {
         mode: "range",
         dateFormat: "Y-m-d",
@@ -897,6 +854,9 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 
+    // ───────────────────────────────────────────────
+    // 4. Date Mode & Label
+    // ───────────────────────────────────────────────
     function updateDateMode() {
         const activeTab = document.querySelector('.tab-btn.active');
         const isReturn = activeTab && activeTab.dataset.trip === "return";
@@ -914,7 +874,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 fp.setDate(fp.selectedDates[0], true);
             }
         }
-
         markInteracted(dateInput);
     }
 
@@ -929,7 +888,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateDateMode();
 
-
+    // ───────────────────────────────────────────────
+    // 5. Autocomplete
+    // ───────────────────────────────────────────────
     const apiUrl = '/cms/api_airport_dropdown/airports/';
 
     function setupAutocomplete(inputId, dropdownId) {
@@ -986,6 +947,9 @@ document.addEventListener("DOMContentLoaded", function () {
     setupAutocomplete('from-input', 'from-dropdown');
     setupAutocomplete('to-input', 'to-dropdown');
 
+    // ───────────────────────────────────────────────
+    // 6. Validation
+    // ───────────────────────────────────────────────
     function validateField(field) {
         if (!field) return false;
 
@@ -996,7 +960,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (field.id === 'travel-date') {
             const activeTab = document.querySelector('.tab-btn.active');
             const isReturn = activeTab && activeTab.dataset.trip === "return";
-
             const selectedCount = fp.selectedDates.length;
 
             if (isReturn) {
@@ -1013,8 +976,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                "Only one date required for one-way trip";
                 }
             }
-        }
-        else {
+        } else {
             switch (field.id) {
                 case 'from-input':
                 case 'to-input':
@@ -1028,9 +990,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     break;
                 case 'phone':
                     isValid = phoneInput.isValidNumber();
-                    if (errorElement) {
-                        errorElement.textContent = isValid ? "" : "Please enter a valid phone number";
-                    }
+                    if (errorElement) errorElement.textContent = isValid ? "" : "Please enter a valid phone number";
                     break;
                 case 'travellers-class':
                     isValid = field.value !== "";
@@ -1043,9 +1003,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (field.dataset.interacted === "true") {
             field.classList.toggle("is-valid", isValid);
             field.classList.toggle("is-invalid", !isValid);
-            if (errorElement) {
-                errorElement.style.display = isValid ? "none" : "block";
-            }
+            if (errorElement) errorElement.style.display = isValid ? "none" : "block";
         }
 
         updateSubmitState();
@@ -1071,7 +1029,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
+    // Event listeners
     form.querySelectorAll('input, select').forEach(field => {
         ['input', 'change', 'blur'].forEach(eventName => {
             field.addEventListener(eventName, () => markInteracted(field));
@@ -1080,7 +1038,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     phoneInputField.addEventListener("countrychange", () => markInteracted(phoneInputField));
 
-
+    // Initial validation
     form.querySelectorAll('input, select').forEach(field => {
         if (field.value.trim() || (field.id === 'travel-date' && fp.selectedDates.length > 0)) {
             markInteracted(field);
@@ -1088,426 +1046,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     submitBtn.disabled = true;
-
-
-
-const travellersDisplay = document.getElementById("travellers-class-display");
-const travellersHidden = document.getElementById("travellers-class");
-const passengerSelector = document.getElementById("passenger-selector");
-const doneBtn = document.getElementById("done-passengers");
-const cabinClassSelect = document.getElementById("cabin-class");
-
-travellersDisplay.addEventListener('click', () => {
-    passengerSelector.style.display = passengerSelector.style.display === 'block' ? 'none' : 'block';
-});
-
-document.addEventListener('click', (e) => {
-    if (!travellersDisplay.contains(e.target) && !passengerSelector.contains(e.target)) {
-        passengerSelector.style.display = 'none';
-    }
-});
-
-const counters = {
-    adults: 1,
-    children: 0,
-    infants: 0
-};
-
-document.querySelectorAll('.increment, .decrement').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const type = btn.dataset.type;
-        const countEl = btn.parentElement.querySelector('.count');
-        let value = parseInt(countEl.textContent);
-
-        if (btn.classList.contains('increment')) {
-            if (type === 'adults' && value < 9) value++;
-            if (type === 'children' && value < 8) value++;
-            if (type === 'infants' && value < 8) value++;
-        } else {
-            if (type === 'adults' && value > 1) value--;
-            if (type === 'children' && value > 0) value--;
-            if (type === 'infants' && value > 0) value--;
-        }
-
-        countEl.textContent = value;
-        counters[type] = value;
-    });
-});
-
-doneBtn.addEventListener('click', () => {
-    const cabin = cabinClassSelect.value;
-    const totalPax = counters.adults + counters.children + counters.infants;
-    let displayText = `${counters.adults} Adult${counters.adults !== 1 ? 's' : ''}`;
-
-    if (counters.children > 0) displayText += `, ${counters.children} Child${counters.children !== 1 ? 'ren' : ''}`;
-    if (counters.infants > 0) displayText += `, ${counters.infants} Infant${counters.infants !== 1 ? 's' : ''}`;
-
-    displayText += ` - ${cabin}`;
-
-    travellersDisplay.value = displayText;
-    travellersHidden.value = `${totalPax} Pax - ${cabin}`; 
-
-    passengerSelector.style.display = 'none';
-
-    markInteracted(travellersHidden);
-    updateSubmitState();
-});
-
-travellersDisplay.value = "1 Adult - Economy";
-travellersHidden.value = "1 Pax - Economy";
-markInteracted(travellersHidden);
-
-
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        if (submitBtn.disabled) return;
-
-        form.querySelectorAll('input, select').forEach(f => markInteracted(f));
-
-        if (!submitBtn.disabled) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
-
-            const formData = {
-                trip_type: document.querySelector('.tab-btn.active').dataset.trip,
-                from: document.getElementById('from-input').value.trim(),
-                to: document.getElementById('to-input').value.trim(),
-                travel_date: dateInput.value.trim(),
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: phoneInput.getNumber(),
-                travellers_class: document.getElementById('travellers-class').value,
-            };
-
-            console.log("Submitting:", formData);
-
-            try {
-                const response = await fetch("/cms/api/flight-enquiry/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formData),
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    alert("Search request sent successfully!\nWe will contact you soon.");
-                    form.reset();
-                    fp.clear();
-                    phoneInput.setCountry("in");
-                    updateDateMode();
-
-                    form.querySelectorAll('.is-valid, .is-invalid').forEach(el => {
-                        el.classList.remove('is-valid', 'is-invalid');
-                    });
-                    form.querySelectorAll('.invalid-feedback').forEach(el => {
-                        el.style.display = "none";
-                    });
-                } else {
-                    alert(data.message || "Something went wrong.");
-                }
-            } catch (err) {
-                alert("Network error. Please try again.");
-            } finally {
-                submitBtn.innerHTML = "Search →";
-                submitBtn.disabled = false;
-                updateSubmitState();
-            }
-        }
-    });
-});
-</script>
--->
-
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            // ───────────────────────────────────────────────
-            // 1. DOM Elements
-            // ───────────────────────────────────────────────
-            const form = document.getElementById("flightEnquiryForm");
-            const submitBtn = form?.querySelector('.search-btn') || null;
-            const dateLabel = document.getElementById("date-label");
-            const dateInput = document.getElementById("travel-date");
-            const phoneInputField = document.getElementById("phone");
-
-            if (!form || !submitBtn) {
-                console.error("Critical elements missing");
-                return;
-            }
-
-            // ───────────────────────────────────────────────
-            // 2. Phone Input
-            // ───────────────────────────────────────────────
-            const phoneInput = window.intlTelInput(phoneInputField, {
-                initialCountry: "in",
-                preferredCountries: ["in", "us", "gb", "ae", "sg"],
-                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.15/build/js/utils.js",
-                separateDialCode: true,
-                autoPlaceholder: "aggressive",
-                nationalMode: false,
-                formatOnDisplay: true,
-            });
-
-            // ───────────────────────────────────────────────
-            // 3. Flatpickr
-            // ───────────────────────────────────────────────
-            const fp = flatpickr(dateInput, {
-                mode: "range",
-                dateFormat: "Y-m-d",
-                minDate: "today",
-                altInput: true,
-                altFormat: "j M Y",
-                allowInput: true,
-                onChange: function (selectedDates, dateStr, instance) {
-                    // Format display value
-                    if (selectedDates.length === 1) {
-                        instance.element.value = instance.formatDate(selectedDates[0], "j M Y");
-                    } else if (selectedDates.length === 2) {
-                        instance.element.value =
-                            instance.formatDate(selectedDates[0], "j M Y") +
-                            " – " +
-                            instance.formatDate(selectedDates[1], "j M Y");
-                    } else {
-                        instance.element.value = "";
-                    }
-                    markInteracted(dateInput);
-                },
-            });
-
-            // ───────────────────────────────────────────────
-            // 4. Date Mode & Label
-            // ───────────────────────────────────────────────
-            function updateDateMode() {
-                const activeTab = document.querySelector('.tab-btn.active');
-                const isReturn = activeTab && activeTab.dataset.trip === "return";
-
-                if (isReturn) {
-                    fp.set("mode", "range");
-                    dateInput.placeholder = "Departure – Return";
-                    if (dateLabel) dateLabel.textContent = "Departure - Return";
-                } else {
-                    fp.set("mode", "single");
-                    dateInput.placeholder = "Departure Date";
-                    if (dateLabel) dateLabel.textContent = "Departure Date";
-
-                    // Force single date mode: remove second date if present
-                    if (fp.selectedDates.length > 1) {
-                        fp.setDate(fp.selectedDates[0], true);
-                    }
-                }
-
-                markInteracted(dateInput);
-            }
-            if (fp.selectedDates.length > 1) {
-                fp.setDate(fp.selectedDates[0], true);
-            }
-        }
-        markInteracted(dateInput);
-    }
-
-            const tabs = document.querySelectorAll('.tab-btn');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(btn => btn.classList.remove('active'));
-                    tab.classList.add('active');
-                    updateDateMode();
-                });
-            });
-
-            updateDateMode();
-
-            // ───────────────────────────────────────────────
-            // 5. Autocomplete (complete version)
-            // ───────────────────────────────────────────────
-            const apiUrl = '/cms/api_airport_dropdown/airports/';
-    // ───────────────────────────────────────────────
-    // 5. Autocomplete
-    // ───────────────────────────────────────────────
-    const apiUrl = '/cms/api_airport_dropdown/airports/';
-
-            function setupAutocomplete(inputId, dropdownId) {
-                const input = document.getElementById(inputId);
-                const dropdown = document.getElementById(dropdownId);
-                if (!input || !dropdown) return;
-
-                let debounceTimer;
-                input.addEventListener('input', () => {
-                    clearTimeout(debounceTimer);
-                    debounceTimer = setTimeout(async () => {
-                        const query = input.value.trim();
-                        if (query.length < 2) {
-                            dropdown.innerHTML = '';
-                            dropdown.classList.remove('show');
-                            markInteracted(input);
-                            return;
-                        }
-
-                        try {
-                            const response = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}`);
-                            if (!response.ok) throw new Error("API error");
-                            const suggestions = await response.json();
-
-                            dropdown.innerHTML = '';
-                            suggestions.forEach(sugg => {
-                                const li = document.createElement('li');
-                                li.textContent = sugg.label;
-                                li.addEventListener('click', () => {
-                                    input.value = sugg.label;
-                                    dropdown.innerHTML = '';
-                                    dropdown.classList.remove('show');
-                                    markInteracted(input);
-                                });
-                                dropdown.appendChild(li);
-                            });
-
-                            if (suggestions.length > 0) {
-                                dropdown.classList.add('show');
-                            }
-                        } catch (err) {
-                            console.error("Autocomplete error:", err);
-                        }
-                    }, 300);
-                });
-
-                document.addEventListener('click', e => {
-                    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
-                        dropdown.classList.remove('show');
-                    }
-                });
-            }
-
-            setupAutocomplete('from-input', 'from-dropdown');
-            setupAutocomplete('to-input', 'to-dropdown');
-
-            // ───────────────────────────────────────────────
-            // 6. STRICT VALIDATION LOGIC
-            // ───────────────────────────────────────────────
-            function validateField(field) {
-                if (!field) return false;
-
-                let isValid = false;
-                let errorElement = field.nextElementSibling?.classList.contains('invalid-feedback')
-                    ? field.nextElementSibling : null;
-
-                // Special strict logic for date field
-                if (field.id === 'travel-date') {
-                    const activeTab = document.querySelector('.tab-btn.active');
-                    const isReturn = activeTab && activeTab.dataset.trip === "return";
-
-                    const selectedCount = fp.selectedDates.length;
-
-                    if (isReturn) {
-                        // Return trip: must have EXACTLY 2 dates
-                        isValid = selectedCount === 2;
-                        if (errorElement) {
-                            errorElement.textContent = selectedCount === 0 ? "Please select departure and return dates" :
-                                selectedCount === 1 ? "Please select return date" :
-                                    "Invalid date selection";
-                        }
-                    } else {
-                        // One Way: must have EXACTLY 1 date
-                        isValid = selectedCount === 1;
-                        if (errorElement) {
-                            errorElement.textContent = selectedCount === 0 ? "Please select departure date" :
-                                "Only one date required for one-way trip";
-                        }
-                    }
-                }
-                // Other fields
-                else {
-                    switch (field.id) {
-                        case 'from-input':
-                        case 'to-input':
-                            isValid = field.value.trim().length >= 2;
-                            break;
-                        case 'name':
-                            isValid = field.value.trim().length >= 2;
-                            break;
-                        case 'email':
-                            isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
-                            break;
-                        case 'phone':
-                            isValid = phoneInput.isValidNumber();
-                            if (errorElement) {
-                                errorElement.textContent = isValid ? "" : "Please enter a valid phone number";
-                            }
-                            break;
-                        case 'travellers-class':
-                            isValid = field.value !== "";
-                            break;
-                        default:
-                            isValid = field.value.trim() !== "";
-                    }
-                }
-
-                // Apply visual feedback only after interaction
-                if (field.dataset.interacted === "true") {
-                    field.classList.toggle("is-valid", isValid);
-                    field.classList.toggle("is-invalid", !isValid);
-                    if (errorElement) {
-                        errorElement.style.display = isValid ? "none" : "block";
-                    }
-                }
-
-                updateSubmitState();
-                return isValid;
-            }
-
-            function updateSubmitState() {
-                if (!submitBtn) return;
-
-                const fields = ['from-input', 'to-input', 'travel-date', 'name', 'email', 'phone', 'travellers-class'];
-                const allValid = fields.every(id => {
-                    const field = document.getElementById(id);
-                    return field && field.classList.contains("is-valid");
-                });
-
-                submitBtn.disabled = !allValid;
-            }
-
-            function markInteracted(field) {
-                if (field) {
-                    field.dataset.interacted = "true";
-                    validateField(field);
-                }
-            }
-
-    // Event listeners
-    form.querySelectorAll('input, select').forEach(field => {
-        ['input', 'change', 'blur'].forEach(eventName => {
-            field.addEventListener(eventName, () => markInteracted(field));
-        });
-    });
-            // ───────────────────────────────────────────────
-            // 7. Event Listeners
-            // ───────────────────────────────────────────────
-            form.querySelectorAll('input, select').forEach(field => {
-                ['input', 'change', 'blur'].forEach(eventName => {
-                    field.addEventListener(eventName, () => markInteracted(field));
-                });
-            });
-
-            phoneInputField.addEventListener("countrychange", () => markInteracted(phoneInputField));
-
-    // Initial validation
-    form.querySelectorAll('input, select').forEach(field => {
-        if (field.value.trim() || (field.id === 'travel-date' && fp.selectedDates.length > 0)) {
-            markInteracted(field);
-        }
-    });
-            // ───────────────────────────────────────────────
-            // 8. Initial Validation
-            // ───────────────────────────────────────────────
-            form.querySelectorAll('input, select').forEach(field => {
-                if (field.value.trim() || (field.id === 'travel-date' && fp.selectedDates.length > 0)) {
-                    markInteracted(field);
-                }
-            });
-
-            submitBtn.disabled = true;
 
     // ───────────────────────────────────────────────
     // Passenger & Class Selector
@@ -1589,18 +1127,12 @@ markInteracted(travellersHidden);
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
         if (submitBtn.disabled) return;
-            // ───────────────────────────────────────────────
-            // 9. Form Submission
-            // ───────────────────────────────────────────────
-            form.addEventListener("submit", async function (e) {
-                e.preventDefault();
-                if (submitBtn.disabled) return;
 
         form.querySelectorAll('input, select').forEach(f => markInteracted(f));
 
-                if (!submitBtn.disabled) {
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
+        if (!submitBtn.disabled) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
 
             const formData = {
                 trip_type: document.querySelector('.tab-btn.active').dataset.trip,
@@ -1617,23 +1149,23 @@ markInteracted(travellersHidden);
                 travellers_summary: travellersHidden.value
             };
 
-                    console.log("Submitting:", formData);
+            console.log("Submitting:", formData);
 
-                    try {
-                        const response = await fetch("/cms/api/flight-enquiry/", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify(formData),
-                        });
+            try {
+                const response = await fetch("/cms/api/flight-enquiry/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData),
+                });
 
-                        const data = await response.json();
+                const data = await response.json();
 
-                        if (response.ok) {
-                            alert("Search request sent successfully!\nWe will contact you soon.");
-                            form.reset();
-                            fp.clear();
-                            phoneInput.setCountry("in");
-                            updateDateMode();
+                if (response.ok) {
+                    alert("Search request sent successfully!\nWe will contact you soon.");
+                    form.reset();
+                    fp.clear();
+                    phoneInput.setCountry("in");
+                    updateDateMode();
 
                     paxCounters.adults = 1;
                     paxCounters.children = 0;
@@ -1662,7 +1194,6 @@ markInteracted(travellersHidden);
     });
 });
 </script>
-
 
 
 
