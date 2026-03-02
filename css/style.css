@@ -466,8 +466,8 @@
 /*** Footer ***/
 .footer .btn.btn-social {
     margin-right: 5px;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -526,38 +526,41 @@
 }
 
 .terms h1 {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.terms h2 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.terms h3 {
     font-size: 18px;
     font-weight: 700;
 }
 
-.terms p {
+.terms h2 {
     font-size: 15px;
+    font-weight: 700;
+}
+
+.terms h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.terms p {
+    font-size: 13px;
     color: #333;
+    line-height: 22px;
+    font-weight: 500;
 }
 
 .terms ul {
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
 }
 
 .terms ul li {
-    font-size: 15px;
+    font-size: 13px;
     color: #333;
     padding: 4px 0;
+    font-weight: 500;
 }
 
 .terms address {
-    font-size: 15px;
+    font-size: 13px;
     color: #333;
 }
 
@@ -567,14 +570,15 @@
 
 .terms .table th {
     background: #1B2C51;
-    font-size: 15px;
+    font-size: 13px;
     color: #fff;
 }
 
 .terms .table td {
     background: #fff;
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
+    font-weight: 500;
 }
 
 .terms .accordion-button {
@@ -583,16 +587,17 @@
 
 .terms .accordion-body {
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .terms strong {
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .display-3 {
-    font-size: 2rem;
+    font-size: 25px;
 }
 
 .adgest {
@@ -617,8 +622,8 @@
 }
 
 .bg-dark {
-    background: url(../img/background-banner.png) no-repeat;
-    background-color: #0c1c4a !important;
+    /* background: url(../img/background-banner.png) no-repeat; */
+    background-color: #0D1447 !important;
 }
 
 .top-form {
@@ -633,26 +638,26 @@
 
 .form-submit {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .form-submit .sub-1 {
-    width: 45%;
-    
+    width: 100%;
+
 
 }
 
 .form-submit .sub-1 button {
-    background: #00154c;
+    background: #E0EEFF;
     width: 100%;
-    color: #fff;
+    color: #2173CF;
     font-size: 18px;
     padding: 14px;
     font-weight: 600;
-    border-radius: 32px 0;
+    border-radius: 8px;
 }
 
-.form-submit .sub-2 {
+/* .form-submit .sub-2 {
     width: 45%;
 }
 
@@ -670,13 +675,13 @@
 
 .form-submit .sub-2 a img {
     height: 41px;
-}
+} */
 
 .call-top {
-    background: #00154c;
-    padding: 8px 32px 8px;
+    background: #0466C8;
+    padding: 4px 11px 4px;
     margin: 5px 0 3px;
-    border-radius: 32px 0;
+    border-radius: 8px;
 }
 
 .call-top span {
@@ -687,7 +692,7 @@
 
 .call-top a {
     color: #fff;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
 }
 
@@ -728,7 +733,7 @@
     position: relative;
     width: 100%;
     height: 45px;
-    bottom: 132px;
+    bottom: 200px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -742,8 +747,8 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    background: #00154c;
-    border: 1px solid #00154c;
+    background: #acacad;
+    border: 1px solid #acacad;
     border-radius: 45px;
     font-size: 22px;
     transition: .5s;
@@ -759,8 +764,8 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    background: #00154c;
-    border: 1px solid #00154c;
+    background: #acacad;
+    border: 1px solid #acacad;
     border-radius: 45px;
     font-size: 22px;
     transition: .5s;
@@ -1218,6 +1223,7 @@ h5.text-white {
 .header-carousel.owl-carousel .owl-item img {
     height: 465px !important;
     object-fit: cover;
+    border-radius: 10px 0 0 10px
 }
 
 .accordion {
@@ -1254,10 +1260,12 @@ h5.text-white {
 .treattopheder ul li a {
     font-size: 14px;
 }
+
 .dropdown-item {
     font-size: 14px;
     padding: 0.45rem 1rem;
 }
+
 .why-chose-head {
     background: url(../img/banner-2-new.png) no-repeat;
     max-width: 100%;
@@ -1265,23 +1273,233 @@ h5.text-white {
     background-position: top;
     background-size: cover;
 }
+
 .back-home {
     background: rgba(255, 255, 255, 0.5);
     padding: 20px;
 }
+
 .accordion-button {
     padding: 0.9rem 0.25rem;
 }
-.back-home{background:rgba(255,255,255,0.5); padding:20px;}
-.accordion-button{padding: 0.9rem 0.25rem;}
+
+.back-home {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+}
+
+.accordion-button {
+    padding: 0.9rem 0.25rem;
+}
+
 button:disabled {
-    background-color: #ccc;   /* gray */
-    cursor: not-allowed;      /* disable pointer */
-    opacity: 0.7;             /* optional */
+    background-color: #ccc;
+    /* gray */
+    cursor: not-allowed;
+    /* disable pointer */
+    opacity: 0.7;
+    /* optional */
+}
+
+.text-light ul {
+    margin: 0;
+    padding: 0;
+}
+
+.text-light ul li {
+    list-style-type: none;
+    width: 50%;
+    float: left;
+}
+
+.size-all {}
+
+.size-all h5 {
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.bg-light h1 {
+    font-size: 26px;
+    line-height: 22px;
+}
+
+.size-txt-1 {
+    color: #fff;
+}
+
+.size-txt-1 a {
+    color: #fff;
+}
+
+.navbar img {
+    height: 42px;
+}
+
+.logo-footer {}
+
+.logo-footer img {
+    background: #fff;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    height: 66px;
+}
+
+.hours-all {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+
+.hours-all ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 
+.hours-all ul li {
+    list-style-type: none;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0px 3px 4px 0px rgb(12 6 14 / 14%);
+    -webkit-box-shadow: 0px 3px 4px 0px rgb(12 6 14 / 14%);
+    width: 32%;
+}
+
+.hours-all ul li h2 {
+    font-size: 17px;
+    font-weight: 500;
+    color: #000000;
+    margin: 13px 0 10px;
+}
+
+.hours-all ul li p {
+    font-size: 14px;
+    color: #22292f;
+    line-height: 20px;
+    margin-bottom: 14px;
+}
+
+#appointmentForm {
+    background: #fff;
+    margin-top: -28px;
+    padding: 9px 16px 0;
+    border-radius: 10px;
+    border: 1px solid #cbcbcb;
+}
+
+#appointmentForm h2 {
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 41px;
+}
+
+#appointmentForm p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #5D5E60;
+}
+
+#appointmentForm .form-control,
+#appointmentForm .form-select {
+    font-size: 14px;
+}
+
+.whole-txt {}
+
+.whole-txt h1 {
+    font-size: 25px;
+    font-weight: 500;
+}
 
 
+.whole-txt p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #737373;
+    line-height: 21px;
+    margin-bottom: 36px;
+}
 
 
+.whole-txt ul {
+    margin: 0;
+    padding: 0;
+
+}
+
+.whole-txt ul li {
+    list-style-type: none;
+    width: 33.33%;
+    float: left;
+}
+
+.whole-txt ul li img {
+    display: block;
+}
+
+.whole-txt ul li strong {
+    font-size: 15px;
+    font-weight: 600;
+    color: #001426;
+    line-height: 22px;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.main-banner-all {
+    background: url(../img/banner-whole-banner-5.png) no-repeat no-repeat;
+    margin: 22px 0 45px;
+}
+
+.main-banner-all .home-based {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 0;
+    align-items: center;
+}
+
+.main-banner-all .home-based .online-travel-1 {
+    width: 45%;
+}
+
+.main-banner-all .home-based .online-travel-1 h2 {
+    font-size: 35px;
+    line-height: 47px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.main-banner-all .home-based .online-travel-2 {
+    width: 55%;
+}
+
+.main-banner-all .home-based .online-travel-2 .home-based-travel {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 14px;
+    border-radius: 10px;
+}
+
+.main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-1 {
+    width: 40%;
+}
+
+.main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-1 img {
+    border-radius: 10px;
+}
+
+.main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 {
+    width: 57%;
+    margin-left:3%;
+}
+.main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 h2 {
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #000;
+}

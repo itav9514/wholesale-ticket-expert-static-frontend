@@ -101,7 +101,7 @@
     // Testimonials carousel
     $('.treatments-carousel').owlCarousel({
         loop: false,
-        margin: 10,
+        margin: 0,
         nav: true,
         autoplay: true,
         smartSpeed: 2000,
@@ -115,10 +115,10 @@
                 items: 1
             },
             768: {
-                items: 2
+                items: 1
             },
             1000: {
-                items: 3
+                items: 1
             }
         }
     });
