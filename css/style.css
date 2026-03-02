@@ -1565,8 +1565,9 @@ button:disabled {
 }
 
 .tab-btn.active {
-    background: #2b6edc;
+    background: #143D8C;
     color: #fff;
+    font-weight:600;
 }
 
 .flight-search-wrapper label {
