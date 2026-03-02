@@ -752,8 +752,7 @@
     border-radius: 45px;
     font-size: 22px;
     transition: .5s;
-    left: -28px;
-    ;
+    left: 20px;
     position: absolute;
 }
 
@@ -769,8 +768,7 @@
     border-radius: 45px;
     font-size: 22px;
     transition: .5s;
-    right: -28px;
-    ;
+    right: 20px;
     position: absolute;
 }
 
@@ -1221,7 +1219,7 @@ h5.text-white {
 }
 
 .header-carousel.owl-carousel .owl-item img {
-    height:700px !important;
+    height: 700px !important;
     object-fit: cover;
     border-radius: 10px 0 0 10px
 }
@@ -1348,7 +1346,8 @@ button:disabled {
 .hours-all {
     width: 100%;
     float: left;
-    margin-top: 20px;
+    margin-top: 12px;
+    margin-bottom: 14px;
 }
 
 .hours-all ul {
@@ -1439,6 +1438,9 @@ button:disabled {
 
 .whole-txt ul li img {
     display: block;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }
 
 .whole-txt ul li strong {
@@ -1463,7 +1465,7 @@ button:disabled {
 }
 
 .main-banner-all .home-based .online-travel-1 {
-    width: 45%;
+    width: 50%;
 }
 
 .main-banner-all .home-based .online-travel-1 h2 {
@@ -1474,7 +1476,7 @@ button:disabled {
 }
 
 .main-banner-all .home-based .online-travel-2 {
-    width: 55%;
+    width: 50%;
 }
 
 .main-banner-all .home-based .online-travel-2 .home-based-travel {
@@ -1495,36 +1497,58 @@ button:disabled {
 
 .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 {
     width: 57%;
-    margin-left:3%;
+    margin-left: 3%;
 }
+
 .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 h2 {
-    font-size: 22px;
-    line-height: 30px;
-    font-weight: 500;
+    font-size: 29px;
+    line-height: 35px;
+    font-weight: 600;
     color: #000;
+}
+
+.main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #404040;
+}
+
+.main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 ul {
+    margin: 0 16px 0;
+    padding: 0;
+}
+
+.main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 ul li {
+    font-size: 15px;
+    color: #404040;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .flight-search-wrapper {
     background: #ffffff;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     /* border: 3px solid #2b6edc; */
     margin-left: 44px;
-        margin-top: 35px;
+    margin-top: 35px;
 }
-.flight-search-wrapper h2{
+
+.flight-search-wrapper h2 {
     font-size: 35px;
     font-weight: 500;
     color: #0D1447;
- 
+
 }
-.flight-search-wrapper progress{
+
+.flight-search-wrapper progress {
     font-size: 15px;
     font-weight: 400;
     color: #0D1447;
- 
+
 }
+
 .trip-tabs {
     display: flex;
     gap: 10px;
@@ -1587,8 +1611,9 @@ button:disabled {
     margin: 0;
     padding: 0;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none; /* hidden by default */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    /* hidden by default */
 }
 
 .autocomplete-dropdown li {
