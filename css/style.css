@@ -1888,7 +1888,7 @@ button:disabled {
 }
 
 .welcome p {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     color: #404040;
     margin: 0 0 20px;
@@ -1993,7 +1993,7 @@ button:disabled {
 }
 
 .wonders p {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     color: #404040;
     margin: 0 0 9px;
@@ -2006,7 +2006,7 @@ button:disabled {
 }
 
 .wonders ul li {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     color: #404040;
 }
