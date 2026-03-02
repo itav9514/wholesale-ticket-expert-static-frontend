@@ -1632,37 +1632,83 @@ button:disabled {
 }
 
 
+
 .autocomplete-dropdown {
     position: absolute;
     top: 100%;
     left: 0;
-    right: 0;
-    max-height: 300px;
+    width: 100%;
+    max-height: 280px;
     overflow-y: auto;
-    background: white;
-    border: 1px solid #ccc;
-    border-top: none;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     list-style: none;
-    margin: 0;
-    padding: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 4px 0 0 0;
+    padding: 6px 0;
+    z-index: 999;
     display: none;
-    /* hidden by default */
-}
-
-.autocomplete-dropdown li {
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-.autocomplete-dropdown li:hover {
-    background-color: #f0f0f0;
 }
 
 .autocomplete-dropdown.show {
     display: block;
 }
+
+.airport-item {
+    padding: 10px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;   
+    transition: background 0.2s ease;
+    
+}
+
+.airport-item:hover {
+    background: #f1f5f9;
+}
+
+.airport-icon {
+    display: flex;          /* important */
+    align-items: center;    /* center SVG inside */
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #2b6cb0;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.airport-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.airport-item:hover .airport-icon  {
+    transform: scale(1.25);   
+    color: #00154b;
+}
+
+.airport-item:hover .airport-info  {
+    transform: scale(1.05);   
+    color: #0056b3;
+}
+
+
+.airport-city {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1e293b;
+}
+
+.airport-name {
+    font-size: 12px;
+    color: #64748b;
+}
+
 
 .passenger-selector {
     position: absolute;
