@@ -1628,3 +1628,25 @@ button:disabled {
 .autocomplete-dropdown.show {
     display: block;
 }
+
+.passenger-selector {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    max-width: 340px;
+}
+
+.passenger-selector .count {
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.passenger-selector .decrement:disabled,
+.passenger-selector .increment:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
