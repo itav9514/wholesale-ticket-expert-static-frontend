@@ -962,13 +962,14 @@
                     console.log("Submitting:", formData);
 
                     try {
-                        const response = await fetch("/cms/api/flight-enquiry/", {
+                        const response = await fetch("https://localhost:32769/api/WholesaleTicketExpertEnquiry", {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify(formData),
                         });
 
                         const data = await response.json();
+                        console.log("Response:", data);
 
                         if (response.ok) {
                             alert("Search request sent successfully!\nWe will contact you soon.");
