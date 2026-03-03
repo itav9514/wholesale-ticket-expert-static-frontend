@@ -536,7 +536,7 @@
 }
 
 .terms h2 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
 }
 
@@ -546,7 +546,7 @@
 }
 
 .terms p {
-    font-size: 13px;
+    font-size: 14px;
     color: #333;
     line-height: 22px;
     font-weight: 500;
@@ -1334,7 +1334,7 @@ button:disabled {
 }
 
 .bg-light h1 {
-    font-size: 26px;
+    font-size: 22px;
     line-height: 22px;
 }
 
@@ -1668,7 +1668,7 @@ button:disabled {
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     list-style: none;
     margin: 4px 0 0 0;
     padding: 6px 0;
@@ -1685,9 +1685,9 @@ button:disabled {
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 12px;   
+    gap: 12px;
     transition: background 0.2s ease;
-    
+
 }
 
 .airport-item:hover {
@@ -1695,8 +1695,10 @@ button:disabled {
 }
 
 .airport-icon {
-    display: flex;          /* important */
-    align-items: center;    /* center SVG inside */
+    display: flex;
+    /* important */
+    align-items: center;
+    /* center SVG inside */
     justify-content: center;
     width: 20px;
     height: 20px;
@@ -1712,13 +1714,13 @@ button:disabled {
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.airport-item:hover .airport-icon  {
-    transform: scale(1.25);   
+.airport-item:hover .airport-icon {
+    transform: scale(1.25);
     color: #00154b;
 }
 
-.airport-item:hover .airport-info  {
-    transform: scale(1.05);   
+.airport-item:hover .airport-info {
+    transform: scale(1.05);
     color: #0056b3;
 }
 
@@ -1888,7 +1890,7 @@ button:disabled {
 .head-about-top {}
 
 .head-about-top h1 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 500;
     color: #fff;
     margin: 10px 0 0;
@@ -1977,9 +1979,9 @@ button:disabled {
 }
 
 .should-choose {
-    width: 100%;
+      width: 100%;
     float: left;
-    margin: 27px 0 0;
+    margin: 27px 0 13px;
 }
 
 .should-choose h2 {
@@ -2026,4 +2028,8 @@ button:disabled {
     font-size: 15px;
     font-weight: 600;
     color: #404040;
+}
+
+.form-floating .iti__selected-flag {
+    padding: 5px 6px 0 8px !important;
 }
