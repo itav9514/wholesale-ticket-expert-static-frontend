@@ -1230,6 +1230,12 @@ h5.text-white {
     width:fit-content !important;
 }
 
+@media (min-width: 992px) and (max-width: 1599px) {
+    .header-carousel.owl-carousel .owl-item img {
+        height: 600px !important; 
+    }
+}
+
 .owl-carousel .owl-item img{
 
 }
