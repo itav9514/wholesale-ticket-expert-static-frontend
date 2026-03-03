@@ -82,7 +82,7 @@
 
 .navbar {
     box-shadow: 0 6px 20px 8px rgba(207, 226, 247, 0.8);
-    margin-bottom:30px;
+    
 }
 .navbar .dropdown-toggle::after {
     border: none;
