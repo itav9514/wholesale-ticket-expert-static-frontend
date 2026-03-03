@@ -820,32 +820,6 @@
                     }
                 });
 
-                /*
-        
-                document.querySelectorAll('.increment, .decrement').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const type = btn.dataset.type;
-                        const countEl = btn.parentElement.querySelector('.count');
-                        let value = parseInt(countEl.textContent);
-        
-                        if (btn.classList.contains('increment')) {
-                            if (type === 'adults' && value < 9) value++;
-                            if (type === 'children' && value < 8) value++;
-                            if (type === 'infants' && value < paxCounters.adults) value++;
-                        } else {
-                            if (type === 'adults' && value > 1) value--;
-                            if (type === 'children' && value > 0) value--;
-                            if (type === 'infants' && value > 0) value--;
-                        }
-        
-                        countEl.textContent = value;
-                        paxCounters[type] = value;
-                    });
-                });
-        
-                */
-
-
 
                 document.querySelectorAll('.increment, .decrement').forEach(btn => {
                     btn.addEventListener('click', () => {
@@ -945,21 +919,85 @@
                     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
 
                     const formData = {
-                        trip_type: document.querySelector('.tab-btn.active').dataset.trip,
-                        from: document.getElementById('from-input').value.trim(),
-                        to: document.getElementById('to-input').value.trim(),
-                        travel_date: dateInput.value.trim(),
-                        name: document.getElementById('name').value.trim(),
-                        email: document.getElementById('email').value.trim(),
+                        fullName: document.getElementById('name').value.trim(),           // ← changed to fullName
+                        // nationality: "...",                                            // commented out in model → optional
                         phone: phoneInput.getNumber(),
+                        email: document.getElementById('email').value.trim(),
+                        tripType: document.querySelector('.tab-btn.active').dataset.trip === 'oneway' ? 'Oneway' : 'Return',
+                        originAirport: document.getElementById('from-input').value.trim(),    // helper function
+                        destinationAirport: document.getElementById('to-input').value.trim(),
+                        departureDate: extractDepartureDate(dateInput.value.trim()),                                  // parse to "yyyy-MM-dd"
+                        returnDate: extractReturnDate(dateInput.value.trim()),                                        // null or "yyyy-MM-dd"
                         adults: paxCounters.adults,
                         children: paxCounters.children,
                         infants: paxCounters.infants,
-                        cabin_class: paxCounters.cabin,
-                        travellers_summary: travellersHidden.value
+                        cabinClass: paxCounters.cabin,                                                                // "Economy" etc.
+                        travellersSummary: travellersHidden.value,
+                        description: document.getElementById('description')?.value.trim() || null                     // if you have notes field
                     };
 
-                    console.log("Submitting:", formData);
+                    // Helper: extract IATA code from string like "Delhi, India (DEL) - Indira Gandhi Intl"
+                    function extractAirportCode(str) {
+                        const match = str.match(/\(([A-Z]{3})\)/);
+                        return match ? match[1] : "";
+                    }
+
+                    /*
+                    // Helper: parse date string to "yyyy-MM-dd" (adjust format as per your date picker)
+                    function extractDepartureDate(dateStr) {
+                        console.log("Parsed dateStr:", dateStr);
+                        // Example: "12 Mar 2026" → "2026-03-12"
+                        // Use date-fns, moment, or native Date parsing here
+                        const date = new Date(dateStr);
+                        console.log("Parsed date:", date);
+                        return date.toISOString().split('T')[0];
+                    }
+
+                    // Similar for return date (split by "–" if present)
+                    function extractReturnDate(dateStr) {
+                        if (!dateStr.includes("–")) return null;
+                        const parts = dateStr.split("–")[1].trim();
+                        const date = new Date(parts);
+                        return date.toISOString().split('T')[0];
+                    }*/
+
+
+                    function extractDepartureDate(dateStr) {
+                        console.log("Parsed dateStr:", dateStr);
+                        if (!dateStr) return null;
+
+                        // Take first part if range
+                        let datePart = dateStr.split("–")[0].trim();
+
+                        // Normalize "18 Mar 2026" → "Mar 18 2026" (better for Date)
+                        datePart = datePart.replace(/^(\d{1,2})\s+(\w{3})\s+(\d{4})$/, "$2 $1 $3");
+
+                        const date = new Date(datePart);
+                        if (isNaN(date.getTime())) {
+                            console.warn("Invalid departure date:", datePart);
+                            return null;
+                        }
+
+                        console.log("Parsed departure date:", date);
+                        return date.toISOString().split('T')[0];
+                    }
+
+                    function extractReturnDate(dateStr) {
+                        if (!dateStr || !dateStr.includes("–")) return null;
+
+                        let returnPart = dateStr.split("–")[1].trim();
+                        returnPart = returnPart.replace(/^(\d{1,2})\s+(\w{3})\s+(\d{4})$/, "$2 $1 $3");
+
+                        const date = new Date(returnPart);
+                        if (isNaN(date.getTime())) {
+                            console.warn("Invalid return date:", returnPart);
+                            return null;
+                        }
+
+                        return date.toISOString().split('T')[0];
+                    }
+
+                    console.log("Sending:", formData);
 
                     try {
                         const response = await fetch("https://localhost:32769/api/WholesaleTicketExpertEnquiry", {
