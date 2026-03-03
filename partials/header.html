@@ -55,7 +55,20 @@
         <div class="phone-header-mobile">
             <a href="tel:1-855-888-0114"><i class="fa fa-phone"></i></a>
         </div>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <div class="d-xl-none d-lg-none d-md-block">
+            <input type="checkbox" id="nav-toggle" class="nav-checkbox">
+
+            <label for="nav-toggle" class="open-btn">&#9776;</label>
+
+            <div class="sidenav">
+                <label for="nav-toggle" class="close-btn">&times;</label>
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact US</a>
+            </div>
+        </div>
+        <button type="button" class="navbar-toggler me-4 d-none d-sm-none" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -157,7 +170,15 @@
     </nav>
     <!-- Navbar End -->
 
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -174,6 +195,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
 
 </body>
 
