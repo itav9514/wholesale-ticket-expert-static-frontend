@@ -55,15 +55,101 @@
         height: 30px;
         font-size: 18px;
     }
+
+    .flight-search-wrapper h2 {
+        font-size: 27px;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .flight-search-wrapper p {
+        font-size: 15px;
+        color: #fff;
+    }
+
+    .whole-txt h1 {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .whole-txt ul li strong {
+        font-size: 13px;
+        font-weight: 600;
+        color: #001426;
+        line-height: 16px;
+        display: inline-block;
+        margin-top: 8px;
+    }
+
+    .search-all-text ul li strong {
+        font-size: 13px;
+        font-weight: 600;
+        color: #000000;
+        display: inline-block;
+        margin: 0 0 7px;
+    }
+
+    .nav-checkbox {
+        display: none;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #0D1447;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 35px;
+        z-index: 99;
+    }
+
+
+    .nav-checkbox:checked~.sidenav {
+        width: 250px;
+    }
+
+    .sidenav a {
+        padding: 11px 11px;
+        text-decoration: none;
+        font-size: 15px;
+        color: #fff;
+        display: block;
+        border-bottom: 1px solid #494848;
+    }
+
+    .close-btn {
+        color: #fff;
+        font-size: 26px;
+        text-align: right;
+        position: absolute;
+        right: 14px;
+        top: 0;
+    }
+
+    .open-btn {
+        font-size: 30px;
+    }
 }
 
 @media (max-width:767px) {
+    .tab-btn {
+        padding: 3px 11px 3px;
+        font-size: 13px;
+    }
+
+    .navbar .navbar-brand img {
+        height: 55px;
+    }
 
     .top-form {
         position: inherit;
         top: 0;
         z-index: 999;
         background: #00154c;
+        padding-bottom: 21px;
     }
 
     .moblie-hide {
@@ -135,11 +221,16 @@
     }
 
     h5.mb-0 {
-        font-size: 16px;
+        font-size: 13px;
     }
 
     p.mb-2 {
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+    .text-light {
+        color: #EFF5FF !important;
+        font-size: 17px;
     }
 
     .blue-back {
@@ -157,7 +248,7 @@
         right: 102px;
         width: 30px;
         height: 30px;
-        background-color: #ff1717;
+        background-color: #0466C8;
         color: #fff;
         border-radius: 100%;
         text-align: center;
@@ -337,7 +428,258 @@
         font-size: 22px;
     }
 
+    .flight-search-wrapper h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffff;
+    }
 
+    .flight-search-wrapper p {
+        font-size: 14px;
+        font-weight: 400;
+        color: #ffff;
+    }
 
+    .hours-all ul {
+        display: block;
+    }
 
+    .hours-all ul li {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .py-5-new {
+        padding-top: 0;
+        padding-bottom: 2rem;
+    }
+
+    .mb-5-new {
+        margin-bottom: 1rem;
+    }
+
+    .whole-txt h1 {
+        font-size: 20px;
+    }
+
+    .whole-txt p {
+        font-size: 13px;
+        line-height: 21px;
+        margin-bottom: 20px;
+    }
+
+    .whole-txt ul li strong {
+        font-size: 13px;
+        font-weight: 600;
+        color: #001426;
+        line-height: 18px;
+        display: inline-block;
+        margin-top: 0;
+    }
+
+    .main-banner-all .home-based {
+        display: block;
+        justify-content: space-between;
+        padding: 20px 0 0;
+        align-items: center;
+    }
+
+    .main-banner-all .home-based .online-travel-1 {
+        width: 100%;
+    }
+
+    .main-banner-all .home-based .online-travel-2 .home-based-travel {
+        display: block;
+    }
+
+    .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-1 {
+        width: 100%;
+    }
+
+    .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .main-banner-all .home-based .online-travel-2 {
+        width: 100%;
+    }
+
+    .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 h2 {
+        margin-top: 16px;
+    }
+
+    .main-banner-all {
+        margin: 22px 0 6px;
+    }
+
+    .why h2 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000000;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .search-all-text ul {
+        display: block;
+    }
+
+    .search-all-text ul li {
+        margin-bottom: 17px;
+        width: 100%;
+    }
+
+    .search-all-text ul li strong {
+        font-size: 15px;
+        font-weight: 600;
+        color: #000000;
+        display: block;
+        margin: 10px 0 0px;
+        text-align: center;
+    }
+
+    .search-all-text ul li span {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        border-radius: 50%;
+        padding: 5px 5px;
+        margin: 0 auto 0;
+    }
+
+    .search-all-text ul li img {
+        display: block;
+        height: 40px;
+    }
+
+    .hours-all ul li h2 {
+        font-size: 15px;
+        font-weight: 500;
+        color: #000000;
+        margin: 13px 0 3px;
+    }
+
+    .hours-all ul li p {
+        font-size: 12px;
+        color: #22292f;
+        line-height: 16px;
+        margin-bottom: 14px;
+    }
+
+    .logo-footer img {
+        background: #fff;
+        margin-bottom: 16px;
+        border-radius: 5px;
+        height: 55px;
+        display: block;
+        margin: 0 auto 17px;
+    }
+
+    .head-about-top h1 {
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+        margin: 0 0 0;
+    }
+
+    .welcome h2 {
+        font-size: 18px;
+        font-weight: 400;
+        color: #000;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+
+    .welcome p {
+        font-size: 13px;
+        font-weight: 400;
+        color: #404040;
+        margin: 0 0 0;
+        text-align: center;
+        line-height: 22px;
+    }
+
+    .should-choose p {
+        font-size: 13px;
+        margin: 0 0 9px;
+    }
+
+    .should-choose h2 {
+        font-size: 15px;
+        font-weight: 500;
+        color: #000;
+        margin: 0 0 9px;
+        text-align: center;
+    }
+
+    .search-all-text-1 ul li strong {
+        font-size: 12px;
+        font-weight: 600;
+        color: #000000;
+        display: block;
+        margin: 4px 0 0px;
+        text-align: center;
+    }
+
+    .search-all-text-1 ul li {
+        list-style-type: none;
+        background: #ffffff;
+        border-radius: 15px;
+        width: 24%;
+        text-align: center;
+    }
+
+    .wonders h2 {
+        font-size: 16px;
+        font-weight: 500;
+        color: #000;
+        margin: 6px 0 7px;
+        text-align: left;
+    }
+
+    .wonders p {
+        font-size: 13px;
+        font-weight: 500;
+        color: #404040;
+        margin: 0 0 9px;
+        text-align: left;
+    }
+
+    .wonders ul li {
+        font-size: 13px;
+        font-weight: 600;
+        color: #404040;
+    }
+
+    .bg-light h1 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .bg-light p {
+        font-size: 13px;
+    }
+
+    .form-floating>.form-control,
+    .form-floating>.form-select,
+    .form-floating>.form-control,
+    .form-floating>.form-select {
+        font-size: 13px;
+    }
+
+    .form-control,
+    .form-floating>label {
+        font-size: 13px;
+    }
+
+    .footer .btn.btn-link {
+        font-size: 12px;
+    }
+
+    .footer .copyright p {
+        text-align: center;
+        font-size: 13px;
+        margin-bottom: 0;
+    }
 }
