@@ -79,6 +79,11 @@
 
 
 /*** Navbar ***/
+
+.navbar {
+    box-shadow: 0 6px 20px 8px rgba(207, 226, 247, 0.8);
+    margin-bottom:30px;
+}
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -1219,9 +1224,14 @@ h5.text-white {
 }
 
 .header-carousel.owl-carousel .owl-item img {
-    height: 540px !important;
+    /* height: 540px !important; */
     object-fit: cover;
-    border-radius: 10px 0 0 10px
+    border-radius: 10px;
+    width:fit-content !important;
+}
+
+.owl-carousel .owl-item img{
+
 }
 
 .accordion {
@@ -1543,8 +1553,8 @@ button:disabled {
 }
 
 .flight-search-wrapper h2 {
-    font-size: 35px;
-    font-weight: 500;
+    font-size: 45px;
+    font-weight: 700;
     color: #0D1447;
 
 }
