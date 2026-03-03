@@ -1,3 +1,62 @@
+@media (max-width:991px) {
+    .flight-search-wrapper {
+        margin-left: 36px;
+        margin-top: 14px;
+        margin-right: 33px;
+    }
+
+    .main-banner-all .home-based .online-travel-1 h2 {
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    .main-banner-all .home-based .online-travel-1 {
+        width: 35%;
+    }
+
+    .main-banner-all .home-based .online-travel-2 {
+        width: 65%;
+    }
+
+    .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 h2 {
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 600;
+        color: #000;
+    }
+
+    .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 ul li {
+        font-size: 13px;
+        color: #404040;
+        margin-bottom: 4px;
+        font-weight: 600;
+    }
+
+    .main-banner-all .home-based .online-travel-2 .home-based-travel .freedom-2 p {
+        font-size: 12px;
+        font-weight: 500;
+        color: #000;
+    }
+
+    .treatments-carousel .owl-nav {
+        bottom: 126px;
+    }
+
+    .treatments-carousel .owl-nav .owl-next {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .treatments-carousel .owl-nav .owl-prev {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+}
+
 @media (max-width:767px) {
 
     .top-form {
@@ -239,25 +298,44 @@
         font-size: 12px;
         margin: 0 0 3px;
     }
-.navbar-nav .dropdown-menu {
-   position: absolute!important;
-}
-.treattopheder {
-    width: 100%;
-    float: left;
-}
-.treattopheder ul li{width:100%;}
-.why-chose-head{height:auto;}
-.bg-primary-1 {
-    height: auto;
-    padding: 14px;
-}
-.testimonial-carousel .owl-item.center .testimonial-text p{font-size:14px;}
-.testimonial-carousel .owl-item.center .testimonial-text h5{font-size:18px;}
-.testimonial-carousel .owl-item.center .testimonial-text span{font-size:14px;}
-.display-3 {
-    font-size: 22px;
-}
+
+    .navbar-nav .dropdown-menu {
+        position: absolute !important;
+    }
+
+    .treattopheder {
+        width: 100%;
+        float: left;
+    }
+
+    .treattopheder ul li {
+        width: 100%;
+    }
+
+    .why-chose-head {
+        height: auto;
+    }
+
+    .bg-primary-1 {
+        height: auto;
+        padding: 14px;
+    }
+
+    .testimonial-carousel .owl-item.center .testimonial-text p {
+        font-size: 14px;
+    }
+
+    .testimonial-carousel .owl-item.center .testimonial-text h5 {
+        font-size: 18px;
+    }
+
+    .testimonial-carousel .owl-item.center .testimonial-text span {
+        font-size: 14px;
+    }
+
+    .display-3 {
+        font-size: 22px;
+    }
 
 
 
