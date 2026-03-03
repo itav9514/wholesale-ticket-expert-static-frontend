@@ -1871,7 +1871,7 @@ button:disabled {
 
     width: 60px;
     height: 60px;
-    display: inline-block;
+    display:block;
     border-radius: 50%;
     padding: 5px 5px;
 }
