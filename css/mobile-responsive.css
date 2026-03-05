@@ -790,4 +790,8 @@
         font-weight: 500;
         color: #fff;
     }
+     .text-light ul li {
+        width: 50%;
+        float: left;
+    }
 }
