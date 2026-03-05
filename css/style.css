@@ -825,24 +825,24 @@
 
 /*********Treatments End slider*****************/
 .thanks-top {
-    background: url(../img/thanks-banner-1.png) no-repeat;
+    background: url(../img/terms-condation.png) no-repeat;
     text-align: center;
     padding: 38px 24px;
     margin: 23px 0 0;
-    height: 300px;
+    height: 250px;
     background-position: bottom;
 }
 
 .thanks-top h1 {
-    font-size: 35px;
-    color: #001c76;
+    font-size: 30px;
+    color: #fff;
     font-weight: 700;
     margin: 29px 0 13px;
 }
 
 .thanks-top p {
-    font-size: 18px;
-    color: #171717;
+    font-size: 14px;
+    color: #fff;
     font-weight: 500;
     margin: 0 0 13px;
 }
@@ -853,7 +853,7 @@
 }
 
 .get-touch h2 {
-    font-size: 32px;
+    font-size:25px;
     font-weight: 600;
     color: #000000;
     text-align: center;
@@ -892,18 +892,18 @@
 }
 
 .get-touch ul li h3 {
-    font-size: 22px;
+    font-size: 17px;
     margin: 10px 0 12px;
 }
 
 .get-touch ul li p {
-    font-size: 15px;
+    font-size: 14px;
     color: #171717;
     font-weight: 500;
 }
 
 .get-treatment h2 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 600;
     color: #000000;
     text-align: center;
@@ -919,7 +919,7 @@
 }
 
 .get-treatment p {
-    font-size: 15px;
+    font-size: 14px;
     color: #171717;
     font-weight: 500;
     text-align: center;
@@ -940,10 +940,12 @@
 
 .banner-treatment .thanks-misson-main h2 {
     color: #fff;
+    font-size:24px;
 }
 
 .banner-treatment .thanks-misson-main p {
     color: #fff;
+    font-size: 14px;
 }
 
 .banner-treatment .thanks-misson-main .misson-1 {
@@ -1030,7 +1032,7 @@ h5.text-white {
 .top-head h2 {
     color: #1b1b1b;
     font-weight: 700;
-    font-size: 33px;
+    font-size: 24px;
     margin: 0 0 24px;
 }
 

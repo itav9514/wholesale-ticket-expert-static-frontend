@@ -76,9 +76,9 @@
     </div>
   </div>
   <!-- Spinner End -->
-    <!-- Navbar Start -->
+  <!-- Navbar Start -->
   <div id="header"></div>
-    <!-- Navbar End -->
+  <!-- Navbar End -->
   <div class="thanks-top">
     <div class="container">
       <div class="row">
@@ -195,7 +195,7 @@
             <li>
               <img src="img/office-icon-3.png" />
               <h3>Email</h3>
-              <p>medical@adamvacations.com</p>
+              <p>support@wholesaleticketexpert.com</p>
             </li>
           </ul>
         </div>
@@ -208,22 +208,18 @@
       <div class="col-lg-12">
         <div class="get-treatment">
           <h2>
-            Get treatment from trusted & certified Medical Tourism
+            Welcome to Wholesale Ticket Expert
+
             <br />
             <hr />
           </h2>
           <p>
-            <strong>Adam Vacations</strong> is a fully accredited & certified
-            medical tourism company based in India. We offer tailored options
-            for patients looking for competitive & quality medical treatment
-            at the Best Hospital in India. Over the past few years, India has
-            emerged as a promising destination for medical tourism, attracting
-            patients from several parts of the world. <br />
-            <br />
-            The usage of innovative technologies, a recognized team of medical
-            practitioners, state-of-the-art infrastructure, top-notch stay
-            facilities, and affordable medical treatment in India makes the
-            country a highly sought-after destination.
+           We understand that finding cheap flights online can be a daunting and time-consuming task. That's why we have revolutionized the booking experience to save you valuable time and ensure you get the best value for your money. Our platform is designed to make searching and booking flights as seamless as possible, eliminating the need for endless comparisons across multiple platforms. As a well-recognized online travel platform in the US and internationally, Whole Sale Ticket Expert specializes in providing an extensive range of flight booking services at exceptionally low prices. Our goal is to create a world where everyone can travel without hefty airfare expenses. With our user-friendly platform powered by intelligent AI technology, organizing, booking, and tracking trips can be done with just a few clicks. Our team of dedicated travel specialists brings a wealth of expertise to curate unique travel offers tailored to your preferences and priorities.
+
+           <br><br>
+           Join Whole Sale Ticket Expert today and unlock a world of affordable travel possibilities with convenience at your fingertips.
+
+
           </p>
         </div>
       </div>
@@ -238,24 +234,25 @@
             <div class="misson-1">
               <h2>Our Mission</h2>
               <p>
-                To facilitate access to world-class medical treatment in India
-                for individuals around the globe, ensuring affordability,
-                transparency, and exceptional patient care. We are committed
-                to offering personalized healthcare solutions, promoting
-                wellness, and enhancing the overall medical tourism experience
-                for our clients.
+                Whole Sale Ticket Expert embarked on this incredible journey in 2019 with a vision to provide affordable
+                flight bookings to fellow travellers. We are passionate about our work and take pride in establishing a
+                platform where users can easily search, compare, and book affordable flight tickets without breaking the
+                bank. Our commitment lies in offering a comprehensive range of flight options, amenities, and travel
+                services to cater to the needs of every traveller.
+
+
               </p>
             </div>
             <div class="misson-2">
               <h2>Our Vision</h2>
               <p>
-                Our vision is to become the premier medical tourism
-                destination facilitator in India, recognized for our
-                unwavering commitment to excellence, integrity, and
-                innovation. We aim to be the trusted partner for individuals
-                seeking high-quality, affordable healthcare solutions, while
-                contributing to the growth and advancement of medical tourism
-                in India.
+                We understand that finding cheap flights online can be a daunting and time-consuming task. That's why we
+                have revolutionized the booking experience to save you valuable time and ensure you get the best value
+                for your money. Our platform is designed to make searching and booking flights as seamless as possible,
+                eliminating the need for endless comparisons across multiple platforms. As a well-recognized online
+                travel platform in the US and internationally
+
+
               </p>
             </div>
           </div>
@@ -266,7 +263,7 @@
   <div class="Clearfix"></div>
 
   <!-- Footer Start -->
-   <div id="footer"></div>
+  <div id="footer"></div>
   <!-- Footer End -->
 
   <!-- Back to Top -->
@@ -361,19 +358,19 @@
 
         // Helper to format pax nicely
         function formatPaxDetails(adults, children, infants) {
-            const parts = [];
-            
-            if (adults > 0) {
-                parts.push(`${adults} Adult${adults > 1 ? 's' : ''}`);
-            }
-            if (children > 0) {
-                parts.push(`${children} Child${children > 1 ? 'ren' : ''}`);
-            }
-            if (infants > 0) {
-                parts.push(`${infants} Infant${infants > 1 ? 's' : ''}`);
-            }
-            
-            return parts.length > 0 ? parts.join(", ") : "—";
+          const parts = [];
+
+          if (adults > 0) {
+            parts.push(`${adults} Adult${adults > 1 ? 's' : ''}`);
+          }
+          if (children > 0) {
+            parts.push(`${children} Child${children > 1 ? 'ren' : ''}`);
+          }
+          if (infants > 0) {
+            parts.push(`${infants} Infant${infants > 1 ? 's' : ''}`);
+          }
+
+          return parts.length > 0 ? parts.join(", ") : "—";
         }
 
         // ── Appointment type ───────────────────────────────────
@@ -383,12 +380,12 @@
           document.getElementById("tripType").textContent = data.tripType || "—";
           document.getElementById("travellersSummary").textContent = data.travellersSummary || "—";
           const paxText = formatPaxDetails(
-              Number(data.adults) || 0,
-              Number(data.children) || 0,
-              Number(data.infants) || 0
+            Number(data.adults) || 0,
+            Number(data.children) || 0,
+            Number(data.infants) || 0
           );
           document.getElementById("paxDetails").textContent = paxText;
-          
+
         }
 
         // ── Message type ───────────────────────────────────────

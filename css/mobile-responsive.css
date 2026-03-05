@@ -103,7 +103,7 @@
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 35px;
-        z-index: 99;
+        z-index: 9999;
     }
 
 
@@ -715,5 +715,18 @@
 
     .navbar {
         position: static;
+    }
+
+    .back-to-top {
+        right: 6px;
+    }
+
+    .btn-lg-square {
+        width: 35px;
+        height: 35px;
+    }
+
+    .d-flex p {
+        font-size: 14px;
     }
 }
