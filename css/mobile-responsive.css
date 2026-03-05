@@ -506,6 +506,11 @@
         padding-bottom: 2rem;
     }
 
+    .py-5-new-1 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
     .mb-5-new {
         margin-bottom: 1rem;
     }
@@ -790,7 +795,8 @@
         font-weight: 500;
         color: #fff;
     }
-     .text-light ul li {
+
+    .text-light ul li {
         width: 50%;
         float: left;
     }
