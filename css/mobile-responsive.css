@@ -1,8 +1,44 @@
 @media (max-width:991px) {
+    .get-touch ul {
+        display: block;
+    }
+
+    .get-touch ul li {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .top-head {
+        margin-top: -53px;
+    }
+
+    .mt-5-new1 {
+        margin-top: 1rem;
+    }
+
+    .get-treatment h2 {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .get-touch ul li img {
+        height: 35px;
+    }
+
+    .get-touch ul li h3 {
+        font-size: 16px;
+        margin: 15px 0 4px;
+    }
+
     .flight-search-wrapper {
         margin-left: 36px;
         margin-top: 14px;
         margin-right: 33px;
+    }
+
+    .py-5-new img {
+        margin: 0 auto 0;
+        display: block;
     }
 
     .main-banner-all .home-based .online-travel-1 h2 {
