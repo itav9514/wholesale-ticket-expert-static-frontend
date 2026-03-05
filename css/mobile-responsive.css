@@ -484,7 +484,7 @@
     .main-banner-all .home-based {
         display: block;
         justify-content: space-between;
-        padding: 20px 0 0;
+        padding: 0 0 0;
         align-items: center;
     }
 
@@ -734,5 +734,12 @@
     .search-btn {
         height: 41px;
         font-size: 17px;
+    }
+
+    .main-banner-all .home-based .online-travel-1 h2 {
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 500;
+        color: #fff;
     }
 }
