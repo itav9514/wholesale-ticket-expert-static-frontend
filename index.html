@@ -241,9 +241,11 @@
                             <!-- Search Button -->
                             <div class="col-md-12">
                                 <button type="submit" class="search-btn" disabled>
-                                    Search →
+                                    Submit →
                                 </button>
                             </div>
+
+                            <div id="form-message" class="mt-3"></div>
 
                         </div>
                     </form>
@@ -543,6 +545,7 @@
             const dateLabel = document.getElementById("date-label");
             const dateInput = document.getElementById("travel-date");
             const phoneInputField = document.getElementById("phone");
+             const messageDiv = document.getElementById("form-message");
 
             if (!form || !submitBtn) {
                 console.error("Critical elements missing");
@@ -915,6 +918,12 @@
                 form.querySelectorAll('input, select').forEach(f => markInteracted(f));
 
                 if (!submitBtn.disabled) {
+
+                    /*
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
+                    */
+
                     submitBtn.disabled = true;
                     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Searching...';
 
@@ -1006,14 +1015,33 @@
                             body: JSON.stringify(formData),
                         });
 
-                        const data = await response.json();
-                        console.log("Response:", data);
+                        const responseText = await response.text();
+                        console.log("Server HTTP status:", response.status);
+                        console.log("Server raw response:", responseText);
+
+                        let data;
+                        try {
+                            data = JSON.parse(responseText);
+                        } catch (e) {
+                            data = { message: responseText || "Invalid response from server" };
+                        }
+
 
                         if (response.ok) {
-                            alert("Search request sent successfully!\nWe will contact you soon.");
+
+                            messageDiv.innerHTML = 
+                            '<div class="alert alert-success">Flight Enquiry sent successfully! We will contact you soon. Redirecting...</div>';
+                            
+                            //alert("Search request sent successfully!\nWe will contact you soon.");
+                            
+                            sessionStorage.setItem(
+                                "wholesaleTicketEnquiryResponse",
+                                JSON.stringify(data)
+                            );
+                            
                             form.reset();
                             fp.clear();
-                            phoneInput.setCountry("in");
+                            phoneInput.setCountry("us");
                             updateDateMode();
 
                             paxCounters.adults = 1;
@@ -1029,11 +1057,25 @@
                             form.querySelectorAll('.invalid-feedback').forEach(el => {
                                 el.style.display = "none";
                             });
+
+                            updateDateMode();
+
+                            setTimeout(() => {
+                                window.location.href = "/thankyou.html";
+                            }, 2000);
+
                         } else {
-                            alert(data.message || "Something went wrong.");
+                            //alert(data.message || "Something went wrong.");
+                            messageDiv.innerHTML = 
+                            `<div class="alert alert-danger">${data.message || "Failed to send search request. Please try again."}</div>`;
                         }
                     } catch (err) {
-                        alert("Network error. Please try again.");
+                        //alert("Network error. Please try again.");
+
+                        console.error("Fetch error:", err);
+                        messageDiv.innerHTML = 
+                            '<div class="alert alert-danger">Error connecting to server. Please check your internet and try again.</div>';
+                            
                     } finally {
                         submitBtn.innerHTML = "Search →";
                         submitBtn.disabled = false;

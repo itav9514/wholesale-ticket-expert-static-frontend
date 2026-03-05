@@ -125,16 +125,27 @@
 
               <!-- Appointment-specific -->
               <li class="appointment-only">
-                <strong>Nationality</strong>
-                <p id="nationality">Loading...</p>
+                <strong>Origin Airport</strong>
+                <p id="originAirport">Loading...</p>
+              </li>
+
+              <li class="appointment-only">
+                <strong>Destination Airport</strong>
+                <p id="destinationAirport">Loading...</p>
+              </li>
+
+              <li class="appointment-only">
+                <strong>Trip Type</strong>
+                <p id="tripType">Loading...</p>
               </li>
               <li class="appointment-only">
-                <strong>Preferred Appointment</strong>
-                <p id="appointment-datetime">Loading...</p>
+                <strong>Travelers Summary</strong>
+                <p id="travellersSummary">Loading...</p>
               </li>
+
               <li class="appointment-only">
-                <strong>Message / Condition</strong>
-                <p id="appointment-description">Loading...</p>
+                <strong>Pax Details</strong>
+                <p id="paxDetails">Loading...</p>
               </li>
 
               <!-- Message-specific -->
@@ -290,7 +301,7 @@
       }
 
       // Load from sessionStorage
-      const appointmentJson = sessionStorage.getItem("medicalEnquiryResponse");
+      const appointmentJson = sessionStorage.getItem("wholesaleTicketEnquiryResponse");
       const messageJson = sessionStorage.getItem("medicalMessageResponse");
 
       let data = null;
@@ -347,29 +358,37 @@
         }
         //document.getElementById("submitted-date").textContent = submittedDate;
 
+
+        // Helper to format pax nicely
+        function formatPaxDetails(adults, children, infants) {
+            const parts = [];
+            
+            if (adults > 0) {
+                parts.push(`${adults} Adult${adults > 1 ? 's' : ''}`);
+            }
+            if (children > 0) {
+                parts.push(`${children} Child${children > 1 ? 'ren' : ''}`);
+            }
+            if (infants > 0) {
+                parts.push(`${infants} Infant${infants > 1 ? 's' : ''}`);
+            }
+            
+            return parts.length > 0 ? parts.join(", ") : "—";
+        }
+
         // ── Appointment type ───────────────────────────────────
         if (enquiryType === "appointment") {
-          document.getElementById("nationality").textContent = data.nationality || "—";
-
-          let apptDisplay = "—";
-          /*if (data.appointmentDate && data.appointmentTime) {
-            const dt = new Date(`${data.appointmentDate}T${data.appointmentTime}`);
-            if (!isNaN(dt)) {
-              apptDisplay = dt.toLocaleString("en-US", {
-                weekday: "long", month: "long", day: "numeric", year: "numeric",
-                hour: "numeric", minute: "2-digit", hour12: true
-              });
-              if (data.appointmentLocalWithTimezone) {
-                apptDisplay = `${data.appointmentLocalWithTimezone}`;
-              }
-            }
-          }*/
-          if (data.appointmentLocalWithTimezone) {
-            apptDisplay = `${data.appointmentLocalWithTimezone}`;
-          }
-          document.getElementById("appointment-datetime").textContent = apptDisplay;
-
-          document.getElementById("appointment-description").textContent = data.description || "—";
+          document.getElementById("originAirport").textContent = data.originAirport || "—";
+          document.getElementById("destinationAirport").textContent = data.destinationAirport || "—";
+          document.getElementById("tripType").textContent = data.tripType || "—";
+          document.getElementById("travellersSummary").textContent = data.travellersSummary || "—";
+          const paxText = formatPaxDetails(
+              Number(data.adults) || 0,
+              Number(data.children) || 0,
+              Number(data.infants) || 0
+          );
+          document.getElementById("paxDetails").textContent = paxText;
+          
         }
 
         // ── Message type ───────────────────────────────────────
@@ -379,7 +398,7 @@
         }
 
         // Optional: clean up
-        sessionStorage.removeItem("medicalEnquiryResponse");
+        sessionStorage.removeItem("wholesaleTicketEnquiryResponse");
         sessionStorage.removeItem("medicalMessageResponse");
       } catch (error) {
         console.error("Error displaying enquiry:", error);
