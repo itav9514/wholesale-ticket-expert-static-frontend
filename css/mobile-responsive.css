@@ -1,4 +1,16 @@
 @media (max-width:991px) {
+    .text-light ul li {
+        width: 100%;
+        float: unset;
+    }
+
+    .logo-footer img {
+        height: 57px;
+        display: block;
+        margin: 0 auto 21px;
+
+    }
+
     .get-touch ul {
         display: block;
     }
