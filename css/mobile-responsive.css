@@ -719,7 +719,7 @@
 
     .back-to-top {
         right: 15px;
-            bottom: 15px;
+        bottom: 15px;
     }
 
     .btn-lg-square {
@@ -729,5 +729,10 @@
 
     .d-flex p {
         font-size: 14px;
+    }
+
+    .search-btn {
+        height: 41px;
+        font-size: 17px;
     }
 }
