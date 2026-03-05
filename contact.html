@@ -353,7 +353,7 @@
 
         try {
           const response = await fetch(
-            "/api/MedicalMessage",
+            "https://localhost:32769/api/WholesaleTicketExpertMessage",
             {
               // ← change URL
               method: "POST",
@@ -382,7 +382,7 @@
             submitBtn.disabled = true;
 
             sessionStorage.setItem(
-              "medicalMessageResponse",
+              "wholesaleTicketMessageResponse",
               JSON.stringify(data),
             );
 

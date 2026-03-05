@@ -302,7 +302,7 @@
 
       // Load from sessionStorage
       const appointmentJson = sessionStorage.getItem("wholesaleTicketEnquiryResponse");
-      const messageJson = sessionStorage.getItem("medicalMessageResponse");
+      const messageJson = sessionStorage.getItem("wholesaleTicketMessageResponse");
 
       let data = null;
       let enquiryType = "none";
@@ -399,7 +399,7 @@
 
         // Optional: clean up
         sessionStorage.removeItem("wholesaleTicketEnquiryResponse");
-        sessionStorage.removeItem("medicalMessageResponse");
+        sessionStorage.removeItem("wholesaleTicketMessageResponse");
       } catch (error) {
         console.error("Error displaying enquiry:", error);
         listEl.innerHTML = '<li class="text-danger"><strong>Error:</strong> Unable to load details.</li>';
