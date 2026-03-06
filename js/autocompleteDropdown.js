@@ -1,6 +1,6 @@
 // Use the correct URL prefix (adjust port/domain as needed)
-const apiUrl = 'http://127.0.0.1:8000/api_airport_dropdown/airports/';
-// const apiUrl = 'https://car.adamvacations.com/cms/cms/api_airport_dropdown/airports/';
+// const apiUrl = 'http://127.0.0.1:8000/api_airport_dropdown/airports/';
+const apiUrl = '/cms/cms/api_airport_dropdown/airports/';
 
 // If testing locally without FORCE_SCRIPT_NAME: 'http://127.0.0.1:8000/cms/api_airport_dropdown/airports/'
 // In production: '/api_airport_dropdown/airports/' (relative path is best)
