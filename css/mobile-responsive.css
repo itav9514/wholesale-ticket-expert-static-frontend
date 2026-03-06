@@ -196,7 +196,7 @@
         position: inherit;
         top: 0;
         z-index: 999;
-        background: #00154c;
+        background: #f1f7fd;
         padding-bottom: 21px;
         border-radius: 20px;
     }
@@ -481,15 +481,15 @@
     }
 
     .flight-search-wrapper h2 {
-        font-size: 20px;
+        font-size: 28px;
         font-weight: 700;
-        color: #ffff;
+        color: #163d7e;
     }
 
     .flight-search-wrapper p {
         font-size: 14px;
         font-weight: 400;
-        color: #ffff;
+        color: #163d7e;
     }
 
     .hours-all ul {
