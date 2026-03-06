@@ -800,4 +800,9 @@
         width: 50%;
         float: left;
     }
+        .flight-search-wrapper {
+        margin-left: 20px;
+        margin-top: 14px;
+        margin-right: 20px;
+    }
 }
