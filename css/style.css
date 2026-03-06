@@ -1323,8 +1323,8 @@ button:disabled {
 
 .text-light ul li {
     list-style-type: none;
-    width: 50%;
-    float: left;
+    /* width: 50%;
+    float: left; */
 }
 
 .size-all {}
